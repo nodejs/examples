@@ -5,16 +5,16 @@
   "main": "index.js",
   "scripts": {
     "test": "jest --coverage",
-    "test:onlychanged": "jest --onlychanged --coverage"
+    "test:onlychanged": "jest --onlyChanged --coverage"
   },
   "keywords": [],
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",
   "devDependencies": {
+    "all-contributors-cli": "^6.14.0",
     "jest": "^25.2.4"
   },
   "dependencies": {
-    "node-fetch": "^2.6.0",
     "yargs": "^15.3.1"
   }
 }
