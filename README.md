@@ -57,4 +57,14 @@ This repository has a non-trivial amount of written content. If you're intereste
 > We use All Contributors for this section of the README. Please ensure you have the `all-contributors-cli` installed if you're modifying it. See the [All Contributors CLI Usage](https://allcontributors.org/docs/en/cli/usage) documentation for details on usage.
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
+<!-- prettier-ignore-start -->
+<!-- markdownlint-disable -->
+<table>
+  <tr>
+    <td align="center"><a href="https://bnb.im"><img src="https://avatars3.githubusercontent.com/u/502396?v=4" width="100px;" alt=""/><br /><sub><b>Tierney Cyren</b></sub></a><br /><a href="https://github.com/node/examples/commits?author=bnb" title="Code">💻</a> <a href="#content-bnb" title="Content">🖋</a> <a href="https://github.com/node/examples/commits?author=bnb" title="Documentation">📖</a> <a href="https://github.com/node/examples/commits?author=bnb" title="Tests">⚠️</a></td>
+  </tr>
+</table>
+
+<!-- markdownlint-enable -->
+<!-- prettier-ignore-end -->
 <!-- ALL-CONTRIBUTORS-LIST:END -->

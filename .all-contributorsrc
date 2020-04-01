@@ -9,6 +9,19 @@
   "imageSize": 100,
   "commit": false,
   "commitConvention": "none",
-  "contributors": [],
+  "contributors": [
+    {
+      "login": "bnb",
+      "name": "Tierney Cyren",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/502396?v=4",
+      "profile": "https://bnb.im",
+      "contributions": [
+        "code",
+        "content",
+        "doc",
+        "test"
+      ]
+    }
+  ],
   "contributorsPerLine": 7
 }
