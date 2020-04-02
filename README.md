@@ -4,11 +4,15 @@ This repository is a collective of opinionated and real-world examples of how yo
 
 ## How This Repository is Structured
 
-This repository is structured in a specific way. Top-level directories are categories of applications - for example `CLI`, `server`, and `utility` - that enable you to find the specific _kind_ of example you're looking for. From there, subdirectories of the categories are specific modules, frameworks, or tools - for example, `yargs` is a CLI framework, both `express` and `fastify` are web frameworks, and `moment` is a utility. Inside of each of those directories exists project directories, where specific examples live. You can find a full list of these examples in the [Examples](#examples) section below.
+This repository is structured in a specific way:
 
-Each example has a few things (if one doesn't, please let us know by creating an issue):
+- **Top-level directories** are **category directories** of applications - for example `CLI`, `server`, and `utility` - that enable you to find the specific _kind_ of example you're looking for.
+- **Second-level directories** are **project directories** named after specific modules, frameworks, platforms, or tools - for example, `yargs` is a CLI framework, both `express` and `fastify` are web frameworks, and `moment` is a utility.
+- **Third-level directories** are **example directories**, where specific examples live. You can find a full list of these examples in the [Examples](#examples) section below.
 
-- Usable example code with comments.
+Each **example** has a few properties (if one doesn't, please [let us know](https://github.com/nodejs/examples/issues/new)):
+
+- Usable example code.
 - Passing tests.
 - A README.md that explains what the example does and how to use it.
 
@@ -26,7 +30,7 @@ Command Line Interfaces (CLIs) are tools that can be accessed exclusively from t
 
 We genuinely appreciate folks who are trying to help out by lowering the barrier to understanding Node.js 🤗
 
-Our baseline for all contributions is following the project's [Code of Conduct]().
+Our baseline for all contributions is following the project's [Code of Conduct](./CODE_OF_CONDUCT.md).
 
 ### Contributing New Examples
 
