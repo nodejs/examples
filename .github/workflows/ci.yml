@@ -15,15 +15,11 @@ jobs:
       uses: actions/setup-node@v1
       with:
         node-version: ${{ matrix.node-version }}
-    - name: Load npm cache
-      with:
-        path: ~/.npm
-        key: ${{ runner.os }}-node-${{ hashFiles('**/package-lock.json') }}
-        restore-keys: |
-          ${{ runner.os }}-node-
-    - run: npm install
+    - name: npm install
+      run: npm install
       env:
         CI: true
-    - run: npm run test:onlychanged
+    - name: npm run test:onlychanged
+      run: npm run test:onlychanged
       env:
         CI: true
