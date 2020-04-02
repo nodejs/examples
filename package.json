@@ -22,7 +22,8 @@
     "globals": [
       "describe",
       "test",
-      "expect"
+      "expect",
+      "jest"
     ]
   }
 }
