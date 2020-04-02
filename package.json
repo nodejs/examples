@@ -13,7 +13,8 @@
   "license": "MIT",
   "devDependencies": {
     "all-contributors-cli": "^6.14.0",
-    "jest": "^25.2.4"
+    "jest": "^25.2.4",
+    "standard": "^14.3.3"
   },
   "dependencies": {
     "yargs": "^15.3.1"
