@@ -58,7 +58,7 @@ This repository has a non-trivial amount of written content. If you're intereste
 
 ### Thank You To Our Contributors
 
-> We use All Contributors for this section of the README. Please ensure you have the `all-contributors-cli` installed if you're modifying it. See the [All Contributors CLI Usage](https://allcontributors.org/docs/en/cli/usage) documentation for details on usage.
+> We use All Contributors for this section of the README. Please ensure you have the `all-contributors-cli` installed if you're modifying it. See the [All Contributors CLI Usage](https://allcontributors.org/docs/en/cli/usage) documentation for details on usage. See the [emoji key](https://allcontributors.org/docs/en/emoji-key) for details on what each emoji represents.
 
 <!-- ALL-CONTRIBUTORS-LIST:START - Do not remove or modify this section -->
 <!-- prettier-ignore-start -->
