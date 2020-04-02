@@ -29,14 +29,14 @@ Since this is a CLI, you'll probably want to get it available on your PATH. Ther
 
 ```bash
 npm i -g . # this will install the current working directory as a global module. you will want to do npm uninstall -g . to uninstall it.
-countEntriesInDirectory --directory=. # run the CLI
+count-entries-in-directory --directory=. # run the CLI
 ```
 
 **Via symlink:**
 
 ```bash
 npm link # this will create a symlink that makes the module act as a global module. npm unlink to remove this.
-countEntriesInDirectory --directory=. # run the CLI
+count-entries-in-directory --directory=. # run the CLI
 ```
 
 ### As a Module Published to npm
@@ -45,7 +45,7 @@ If you were to pulbish this CLI to npm, there'd be two ways you'd use it from th
 
 ```bash
 npm i -g count-entries-in-directory # this would install the module from the registry and make it globally available
-countEntriesInDirectory --directory=. # run the CLI
+count-entries-in-directory --directory=. # run the CLI
 ```
 
 ```bash
