@@ -10,6 +10,29 @@ This repository is structured in a specific way:
 - **Second-level directories** are **project directories** named after specific modules, frameworks, platforms, or tools - for example, `yargs` is a CLI framework, both `express` and `fastify` are web frameworks, and `moment` is a utility.
 - **Third-level directories** are **example directories**, where specific examples live. You can find a full list of these examples in the [Examples](#examples) section below.
 
+Here is an example of the structure:
+
+```text
+- examples (root)
+  - category
+    - project
+      - example
+  - category
+    - project
+      - example
+      - example
+      - example
+    - project
+      - example
+      - example
+  - category
+    - project
+      - example
+    - project
+      - example
+      - example
+```
+
 Each **example** has a few properties (if one doesn't, please [let us know](https://github.com/nodejs/examples/issues/new)):
 
 - Usable example code.
@@ -34,9 +57,11 @@ Our baseline for all contributions is following the project's [Code of Conduct](
 
 ### Contributing New Examples
 
-If you'd like to contribute an example, we'd genuinely appreciate your help. , there's a few things we'll expect from any contribution of a new example:
+If you'd like to contribute an example, we'd genuinely appreciate your help. There's a few things we'll expect from any contribution of a new example:
 
-- Correct directory structure. This means:
+- If the example is of a new category or project, the appropriate new directories should be created in addition to the necessary example directory. This means:
+  - If someone wanted to contribute an `express` example and there was no top level category that it fit within, creating a `servers` directory with an `express` subdirectory would be needed.
+  - If someone wanted to create `fastify` example after the `servers` directory had already been created, creating a `fastify` directory within the `servers` category would be needed.
 - Usable example code. This means:
   - Comprehensive comments.
   - Descriptive and readable variable names.
