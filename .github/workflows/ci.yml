@@ -12,7 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: |
-        git fetch --no-tags --prune --depth=1 origin master
+        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
     - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
       uses: actions/setup-node@v1
       with:
