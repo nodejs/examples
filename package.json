@@ -6,7 +6,7 @@
   "scripts": {
     "test": "jest --coverage",
     "test:onlychanged": "jest --onlyChanged --coverage",
-    "test:changedsince": "jest --changedSince master --coverage",
+    "test:changedsince": "jest --changedSince=master --coverage",
     "lint": "standard"
   },
   "keywords": [],
