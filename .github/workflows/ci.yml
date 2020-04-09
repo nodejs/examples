@@ -12,8 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: |
-        git fetch --no-tags --prune --depth=1 origin +refs/heads/*:refs/remotes/origin/*
-        git checkout -b master
+        git checkout -b master --track origin/master 
         git checkout ${{ github.event.pull_request.head.sha }}
     - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
       uses: actions/setup-node@v1
