@@ -1,4 +1,4 @@
-name: Node.js Cross-platform CI
+name: tests(push) - install, lint, test:changedsince
 
 on: [push]
 
