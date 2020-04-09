@@ -12,6 +12,7 @@ jobs:
     steps:
     - uses: actions/checkout@v1
     - run: |
+        git fetch --no-tags --depth=1 origin master
         git checkout -b master --track origin/master 
         git checkout ${{ github.event.pull_request.head.sha }}
     - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
