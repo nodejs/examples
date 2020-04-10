@@ -19,7 +19,7 @@ Options:
 
 You'll want to start by installing dependencies:
 
-```
+```bash
 npm install
 ```
 
