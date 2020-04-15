@@ -10,7 +10,7 @@ This repository is structured in a specific way:
 - **Second-level directories** are **project directories** named after specific modules, frameworks, platforms, or tools - for example, `yargs` is a CLI framework, both `express` and `fastify` are web frameworks, and `moment` is a utility.
 - **Third-level directories** are **example directories**, where specific examples live. You can find a full list of these examples in the [Examples](#examples) section below.
 
-Here is an example of the structure:
+Here is an example of the structure in general terms:
 
 ```text
 - examples (root)
@@ -51,35 +51,7 @@ Command Line Interfaces (CLIs) are tools that can be accessed exclusively from t
 
 ## Contributing
 
-We genuinely appreciate folks who are trying to help out by lowering the barrier to understanding Node.js 🤗
-
-Our baseline for all contributions is following the project's [Code of Conduct](./CODE_OF_CONDUCT.md).
-
-### Contributing New Examples
-
-If you'd like to contribute an example, we'd genuinely appreciate your help. There's a few things we'll expect from any contribution of a new example:
-
-- If the example is of a new category or project, the appropriate new directories should be created in addition to the necessary example directory. This means:
-  - If someone wanted to contribute an `express` example and there was no top level category that it fit within, creating a `servers` directory with an `express` subdirectory would be needed.
-  - If someone wanted to create `fastify` example after the `servers` directory had already been created, creating a `fastify` directory within the `servers` category would be needed.
-- Usable example code. This means:
-  - Comprehensive comments.
-  - Descriptive and readable variable names.
-  - Modern JavaScript.
-- We use Jest for testing. Examples' tests should check these boxes:
-  - Tests should be written for all code that can be tested.
-  - Tests should be in the format of `<name-of-file-being-tested>.test.js` and should live alongside the files they're testing.
-- Proper documentation. This means:
-  - A README.md that explains what the example does and how to use it, plus documents the examples dependencies.
-  - The README should include a title, description, instructions for usage, and instructions for running the test.
-
-### Contributing to Tests
-
-We're always willing to take on more tests or improvements to our existing tests. We use Jest, and actively leverage the `onlyChanged` flag to reduce nosie in our CI.
-
-### Contributing to Prose
-
-This repository has a non-trivial amount of written content. If you're interested in helping provide clarity and context or otherwise improving our prose, we welcome your contributions.
+We've documented how to meaningfully contribute in [CONTRIBUTING.md](./CONTRIBUTING.md) 🤗
 
 ### Thank You To Our Contributors
 
