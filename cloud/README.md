@@ -11,3 +11,7 @@ Anything that is related to deployment of Node.js applications to the cloud. For
 - Orchestration (Kubernetes, Terraform, OpenShift)
 - Cloud-specific (AWS, GCP, Azure, IBM Cloud, DigitalOcean, Alibaba Cloud, Oracle Cloud)
 - Tiny Clouds (Netlify, Now, Glitch, CloudFlare Workers, Heroku, Surge, Begin)
+
+## Contributing to Examples
+
+If you're interested in seeing more examples of Node.js in the cloud or want to help maintain the current examples, we more than welcome your contribution! See [CONTRIBUTING.md](../CONTRIBUTING.md) for more details 🤗

@@ -8,3 +8,7 @@ Any module that is helpful in simplifying tasks that you'll encounter in Node.js
 
 - Utility libraries (Lodash, Underscore) that help simplify common operations
 - Single purpose libraries (Moment, node-fetch) that solve a problem particularly well
+
+## Contributing to Examples
+
+If you're interested in seeing more examples of utilities or want to help maintain the current examples, we more than welcome your contribution! See [CONTRIBUTING.md](../CONTRIBUTING.md) for more details 🤗
