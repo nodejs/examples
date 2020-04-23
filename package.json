@@ -4,16 +4,17 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "jest --coverage",
+    "test:unit": "jest --coverage",
     "test:onlychanged": "jest --onlyChanged --coverage",
-    "lint": "standard"
+    "lint": "standard",
+    "test": "npm run lint && npm run test:unit"
   },
   "keywords": [],
   "author": "Tierney Cyren <hello@bnb.im>",
   "license": "MIT",
   "devDependencies": {
     "all-contributors-cli": "^6.14.0",
-    "jest": "^25.2.4",
+    "jest": "^25.2.6",
     "standard": "^14.3.3"
   },
   "dependencies": {
