@@ -8,3 +8,7 @@ Any software built with Node.js that serves content over HTTP. For example:
 
 - An API server that responds with a JSON payload
 - A web server that serves dynamic content based on user requests
+
+## Contributing to Examples
+
+If you're interested in seeing more examples of servers using Node.js or want to help maintain the current examples, we more than welcome your contribution! See [CONTRIBUTING.md](../CONTRIBUTING.md) for more details 🤗
