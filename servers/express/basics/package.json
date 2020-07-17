@@ -1,0 +1,28 @@
+{
+  "name": "express-basics",
+  "version": "1.0.0",
+  "description": "Express basic function examples",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "tap test/*.js"
+  },
+  "keywords": [
+    "express",
+    "examples",
+    "nodejs"
+  ],
+  "author": "gpunathi@in.ibm.com",
+  "license": "Apache-2.0",
+  "devDependences": {
+    "tap": "^14.10.7"
+  },
+  "dependencies": {
+    "express": "^4.17.1",
+    "express-session": "^1.17.1",
+    "mongodb-memory-server": "^6.6.1",
+    "multer": "^1.4.2"
+  }
+}
