@@ -24,10 +24,6 @@ These examples will show you how to take Node.js functions and deploy and run th
 If you like using ICF, you can sign-up for the *free*, self-study [Cognitve Class.ai](https://cognitiveclass.ai/) course and get [Acclaim badge](https://www.youracclaim.com/org/ibm/badge/serverless-computing-using-cloud-functions-developer-i) certified:
 * [Serverless Computing using Cloud Functions - Developer I course](https://cognitiveclass.ai/courses/serverless-computing-using-cloud-functions-developer-1)
 
-## Prerequisites
-
-TBD
-
 ## Background
 
 **Actions** are stateless code snippets (functions) that run on the ICF platform. The platform supports functions written in JavaScript (Node.js) as well as many other programming languages such as Python, Swift and Java.
@@ -39,3 +35,22 @@ The ICF platform is based upon the [Apache OpenWhisk](https://openwhisk.apache.o
 ![Programming model](images/ICF-Programming-Model.png)
 
 Actions can also call other actions or even be composed into sequence of actions.  There are even specialized actions called *Web actions* that are annotated making them publicly accessible to quickly enable you to build web based applications and handle HTTP data directly with any `Content-Type`.
+
+## Prerequisites
+
+In order to run these examples, you will need to:
+
+##### Register for and configure a free IBM Cloud Account
+
+1. Register for a free IBM Cloud account using the linked instructions:
+    - [https://cloud.ibm.com/registration](https://cloud.ibm.com/registration)
+
+2. Make sure your account targets a region that supports IBM Cloud Functions using the following link:
+    - [Target a supported regions](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cloudfunctions_regions) using the CLI.
+
+##### Install the IBM Cloud Command Line Interface (CLI) and Cloud Functions plugin
+
+1. Install the [IBM Cloud Command Line Interface (CLI)](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started) by following the steps outlined on the linked page.
+
+2. Install the [Cloud Functions (CF)](https://cloud.ibm.com/functions/learn/cli) plugin by following the steps outlined on the linked page.
+    - *New accounts will automatically have a single `Namespace` (represented by a UUID) and `Resource Group` (called `Default`) created.*
