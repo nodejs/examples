@@ -40,8 +40,11 @@ If you like using ICF, you can sign-up for the *free*, self-study [Cognitve Clas
         * [Update action](#update-action)
         * [Invoke using command line parameters](#invoke-using-command-line-parameters)
         * [Invoke using parameter file](#invoke-using-parameter-file)
-    * [ZIP actions](#zip-actions)
-        * [TODO]()
+    * [ZIP action](#zip-action)- *packaging NPM modules dependencies*
+    * [Asynchronous action](#asynchronous-action) - *using Promises*
+    * [Web action](#web-action) - *automatically making action output web-accessible using [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)*
+    * [Sequencing actions](sequences.md#sequencing-actions) - *easily create sequences of existing actions*
+
 * [Observations](#observations)
 
 ## Background
@@ -195,11 +198,16 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
     ibmcloud fn activation result 6bf1f670ee614a7eb5af3c9fde81304
     ```
 
+    You should see similar output as when you previously used the `--result` flag on the `invoke` command.
+
+    <details>
+    <summary>Sample output:</summary>
     ```json
     {
         "payload": "Hello World!"
     }
     ```
+    </details>
 
 3. Retrieve the full activation record. To get the complete activation record use the `activation get` command using the activation ID from the invocation:
 
@@ -207,6 +215,10 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
     ibmcloud fn activation get 6bf1f670ee614a7eb5af3c9fde813043
     ```
 
+    You should see the complete activation record as when you previously sed the `--blocking` flag on the `invoke` command.
+
+    <details>
+    <summary>Sample output:</summary>
     ```json
     ok: got activation 6bf1f670ee614a7eb5af3c9fde813043
     {
@@ -222,41 +234,30 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
       ...
     }
     ```
+    </details>
 
-<!--
-## Retrieve activation records
-
-If you forget to record the activation ID, there are a couple of `activation` commands to help you.
-
-#### Retrieve the last activation record
-
-1. Run the following command to get your last activation record:
+4. Retrieve the last activation record:
 
     ```bash
     ibmcloud fn activation get --last
     ```
 
-    ```json
-    {
-        "payload": "Hello world"
-    }
-    ```
-
-#### Retrieve the recent activation list
-
-1. Run the following command to get a list of your most recent activations:
+5. Retrieve the msot recent recent activation list:
 
     ```bash
     ibmcloud fn activation list
     ```
 
+    <details>
+    <summary>Sample output:</summary>
     ```bash
     Datetime   Activation ID  Kind      Start Duration Status  Entity
     y:m:d:hm:s 44794bd6...    nodejs:10 cold  34s      success <NAMESPACE>/hello:0.0.1
     y:m:d:hm:s 6bf1f670...    nodejs:10 warm  2ms      success <NAMESPACE>/hello:0.0.1
     ```
+    </details>
 
--->
+    Note: the last 'N' cached activations are shown.
 
 ### Hello world with parameters
 
@@ -278,7 +279,7 @@ Event parameters can be passed to an action's function when it is invoked. Let's
     ibmcloud fn action update hello hello.js
     ```
 
-### Invoke using command line parameters
+#### Invoke using command line parameters
 
 When invoking actions through the command line, parameter values can be explicitly passed using the `—param` flag or the shorter `-p` flag.
 
@@ -316,7 +317,7 @@ You can also pass parameters from a file containing the desired content in JSON 
 2. Invoke the `hello` action using parameters from the JSON file:
 
     ```bash
-    ibmcloud fn action invoke hello --result --param-file parameters.json
+    ibmcloud fn action invoke hello --param-file parameters.json --result
     ```
 
     ```json
@@ -325,107 +326,497 @@ You can also pass parameters from a file containing the desired content in JSON 
     }
     ```
 
-<!-->
-### Invoke with nested parameters
+### ZIP action
 
-Parameter values can be any valid JSON value, including nested objects. Let's update your action to use child properties of the event parameters.
+The NodeJS runtime, where your function executes, has a [fixed list of installed NPM modules](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-runtimes#openwhisk_ref_javascript_environments).  If you require more NPM modules, you can ZIP them with your action code.
 
-1. Create the `hello-person` action with the following source code:
+##### Fantasy name generator
 
-    ```javascript
-    function main(params) {
-        return {payload:  'Hello, ' + params.person.name + ' from ' + params.person.place};
-    }
-    ```
+This example shows how to package a fun NPM module called [Fantasy Name Generator](https://www.npmjs.com/package/fantasy-name-generator) with an action function.
 
-    ```bash
-    ibmcloud fn action create hello-person hello-person.js
-    ```
+1. Create a project directory and change into it:
 
-    Now the action expects a single `person` parameter to have the `name` and `place` fields.
+```bash
+mdkir namegen
+cd namegen
+```
 
-2. Invoke the action with a single `person` parameter that is valid JSON:
+2. Create `namegen.js` with the following code:
 
-    ```bash
-    ibmcloud fn action invoke --result hello-person -p person '{"name": "Elrond", "place": "Rivendell"}'
-    ```
+```javascript
+function namegen(params) {
 
-    The result is the same because the CLI automatically parses the `person` parameter value into the structured object that the action now expects:
+    const generator = require('fantasy-name-generator');
+    const usage = "-p race [see https://www.npmjs.com/package/fantasy-name-generator] -p gender [male|female]"
 
-    ```json
-    {
-        "payload": "Hello, Elrond from Rivendell"
-    }
-    ```
+    if (params === undefined || params.race === undefined ||
+        params.gender === undefined || ( params.gender != 'male' && params.gender != 'female' )) {
+            return { usage: usage };
+        }
 
-{% hint style="success" %}
-That was pretty easy, right? You can now pass parameters and access these values in your serverless functions. What about parameters that you need but don't want to manually pass in every time? Guess what? There’s a trick for that!
+    var name = generator.nameByRace(params.race,{gender: params.gender});
+
+    return{ name: name };
+}
+
+exports.main = namegen;
+```
+
+3. Create `package.json` with these contents:
+
+```javascript
+{
+  "name": "namegen",
+  "version": "1.0.0",
+  "description": "Serverless fantasy name generator",
+  "main": "namegen.js",
+  "dependencies": {
+    "fantasy-name-generator": "^2.0.0"
+  }
+}
+```
+
+4. Install NPM required modules locally:
+
+```bash
+npm install
+```
+
+5. ZIP the project files with local `node_modules`:
+
+```bash
+zip -r action.zip *
+```
+
+6. Create the action
+
+Since a ZIP action does not have a `.js` extension, we must use the `--kind` parameter to tell ICF what runtime and version to use (`default` to latest in this example):
+
+```bash
+ibmcloud fn action update namegen action.zip --kind nodejs:default
+```
+
+7. Invoke the action with parameters (block for `-r` result):
+
+```bash
+ic fn action invoke namegen -p race human -p gender female -r
+{
+    "name": "Aldrella"
+}
+
+```
+
+### Asynchronous action
+
+JavaScript functions that run asynchronously may need to return the activation result after the `main` function has returned. You can accomplish this by returning a Node.js `Promise` in your action.
+
+1. Save the following content in a file called `asyncAction.js`:
+
+```javascript
+function main(args) {
+     return new Promise(function(resolve, reject) {
+       setTimeout(function() {
+         resolve({ done: true });
+       }, 2000);
+    })
+ }
+```
+
+Notice that the `main` function returns a promise, which indicates that the activation hasn't completed yet, but is expected to in the future.
+
+2. Create the action and invoke it:
+
+   ```bash
+   ibmcloud fn action create asyncAction asyncAction.js
+   ```
+
+   ```bash
+   ibmcloud fn action invoke --result asyncAction
+   ```
+
+   ```json
+   {
+       "done": true
+   }
+   ```
+
+   Notice that you performed a blocking invocation of an asynchronous action.
+
+2. Fetch the last activation log to see how long the async activation took to complete:
+
+   ```text
+   ibmcloud fn activation get --last
+   ```
+
+   ```json
+   {
+      ...
+      "start": 1574133220119,
+      "end": 1574133222155,
+      "duration": 2036,
+      ...
+   }
+   ```
+
+   Checking the `duration` field in the activation record, you can see that this activation took slightly over two seconds to complete.
+
+### Web action
+
+ICF can turn any action into a `web` accessible action using the `--web` flag on create or update. This allow the function to produce web-ready contents for constructing web sites using configurable Cross-Origin Resource Sharing (CORS) headers.
+
+Web actions are actions that can be called externally using the HTTP protocol from clients like `curl` or web browsers. IBM Cloud Functions (ICF) provides a simple flag, `--web true`, which causes it to automatically create an HTTP accessible URL (endpoint) for any action.
+
+## Create and invoke a web action
+
+Let's turn the `hello` action into a web action!
+
+1. Update the action to set the `--web` flag to `true`:
+
+      ```bash
+      ibmcloud fn action update hello --web true
+      ```
+
+      ```bash
+      ok: updated action hello
+      ```
+
+      The `hello` action has now been assigned an HTTP endpoint.
+
+2. Retrieve the web action's URL exposed by the platform for the `hello` action:
+
+      ```bash
+      ibmcloud fn action get hello --url
+      ```
+
+      ```bash
+      ok: got action hello
+      https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello
+
+      ```
+
+3. Invoke the web action URL returned using the `curl` command:
+
+      ```bash
+      curl "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello"
+      ```
+
+      It looks like nothing happened! In fact, an HTTP response code of `204 No Content` was returned which you can verify if you add the verbose flag `-v`:
+
+      ```bash
+      curl -v "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello"
+      ```
+
+      ```bash
+      ...
+      GET /api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello HTTP/2
+      Host: us-south.functions.cloud.ibm.com
+      User-Agent: curl/7.54.0
+      Accept: */*
+      * Connection state changed (MAX_CONCURRENT_STREAMS updated)!
+      HTTP/2 204
+      ...
+      ```
+
+{% hint style="info" %}
+This unexpected result occurred because you need to tell ICF what `content-type` you expect the function to return since the function did not explicitly set one.
 {% endhint %}
--->
 
-<!--
+4. Invoke the web action URL with a JSON extension using the `curl` command.
 
-## Bind default parameters
+     To signal ICF to set the `content-type` to `application/json` on the HTTP response, you need to add `.json` after the action name, at the end of the URL. Try invoking it now:
 
-Actions can be invoked with multiple named parameters. Recall that the `hello` action from the previous example expects two parameters: the _name_ of a person and the _place_ where they're from.
+      ```bash
+      curl "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello.json"
+      ```
 
-Rather than pass all the parameters to an action every time, you can bind default parameters. Default parameters are stored in the platform and automatically passed in during each invocation. If the invocation includes the same event parameter, this will overwrite the default parameter value.
+      You now get a successful HTTP response in JSON format which matches the `.json` extension you added:
 
-Let's use the `hello` action from your previous example and bind a default value for the `place` parameter.
+      ```json
+      {
+         "message": "Hello, undefined from Rivendell"
+      }
+      ```
 
-1. Update the action by using the `--param` option to bind default parameter values:
+## Requests with query parameters
 
-    ```bash
-    ibmcloud fn action update hello --param place Rivendell
-    ```
+Additionally, you can invoke web actions with query parameters.
 
-2. Invoke the action, passing only the `name` parameter this time:
+1. Use curl to invoke the `hello` web action with a `name` query parameter:
 
-     ```bash
-     ibmcloud fn action invoke --result hello --param name Elrond
-     ```
+      ```bash
+      curl "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello.json?name=Josephine"
+      ```
 
-     ```json
-     {
-        "payload": "Hello, Elrond from Rivendell"
-     }
-     ```
+      ```json
+      {
+         "message": "Hello, Josephine from Rivendell"
+      }
+      ```
 
-    Notice that you did not need to specify the `place` parameter when you invoked the action.
+      If you have been following all the exercises in this course, you will see that the `place` parameter has a default value bound to it.
 
-### Override a bound parameter
+2. Now, try to invoke the `hello` web action with both a `name` and `place` query parameters:
 
-Default parameter bindings on an action can still be overwritten by specifying the parameter value at invocation time.
+      ```bash
+      curl "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello.json?name=Josephine&place=Austin"
+      ```
 
-1. Invoke the action again, passing both `name` and `place` values:
+      ```bash
+      {
+          "code": "5675a20dbab5e05445d2a55b38236946",
+          "error": "Request defines parameters that are not allowed (e.g., reserved properties)."
+      }
+      ```
 
-    ```bash
-    ibmcloud fn action invoke --result hello --param name Elrond --param place "the Lonely Mountain"
-    ```
+      This error is because web actions, by default, finalize (protect) all bound parameters, making them protected from changes on HTTP requests. In this case, the `place` parameter was bound to the value `Rivendell`.
 
-    ```json
-    {
-        "payload": "Hello, Elrond from the Lonely Mountain"
-    }
-    ```
+3. Set the `final` annotation to `false`:
 
-Notice that the command line value overwrites the value that was bound to the action.
+      ```bash
+      ibmcloud fn action update hello -a final false
+      ```
 
-{% hint style="warning" %}
-Once parameters are bound, there is no current way to unbind them; you will have to delete the entire action and start over binding only the parameters you want.
+      ```bash
+      ok: updated action hello
+      ```
+
+      This will override the default protection on bound parameters.
+
+4. Retry the previous invocation with both query parameters:
+
+      ```bash
+      curl "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello.json?name=Josephine&place=Austin"
+      ```
+
+      ```bash
+      {
+          "payload": "Hello, Josephine from Austin"
+      }
+      ```
+
+<!-- ## Disable web action support (we cannot disable as we use this in API create...)
+
+1. Update the action to set the `--web` flag to `false`:
+
+      ```bash
+      ibmcloud fn action update hello --web false
+      ```
+
+      ```bash
+      ok: updated action hello
+      ```
+
+2. Verify the action is no longer externally accessible:
+
+      ```bash
+      curl "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/hello.json"
+      ```
+
+      ```json
+      {
+        "error": "The requested resource does not exist.",
+        "code": "1dfc1f7cb457ed4bb1f2978fc75bd31f"
+      }
+      ``` -->
+
+## Content types and extensions
+
+Web actions invoked through the platform API either have to set the HTTP response header's `content-type` explicitly within the action function or the caller must append a content extension on the URL so the platform will set the `content-type` on the function's behalf.
+
+The platform supports the following content type extensions: `.json`, `.html`, `.http`, `.svg` or `.text` for the request. If no content extension is provided, the platform defaults to `.http`.
+
+In most cases, it is advisable to have the web action set the content type explicitly when possible.
+
+## HTTP request properties
+
+All web actions created using the `--web` flag are also treated as `http` actions, meaning they can be called with different HTTP methods like GET, POST, or DELETE.
+
+HTTP web actions, when invoked, also receive additional HTTP request details as parameters to the action input argument. These include:
+
+1. `__ow_method` \(type: string\): The HTTP method of the request.
+2. `__ow_headers` \(type: map string to string\): The request headers.
+3. `__ow_path` \(type: string\): The unmatched path of the request \(matching stops after consuming the action extension\).
+4. `__ow_body` \(type: string\): The request body entity, as a base64 encoded string when content is binary or JSON object/array, or plain string otherwise. Only present if handling raw HTTP requests, or when the HTTP request entity is not a JSON object or form data.
+5. `__ow_query` \(type: string\): The query parameters from the request as an unparsed string. Click [here](https://github.com/apache/openwhisk/blob/master/docs/webactions.md#raw-http-handling) for more information.
+6. `__ow_user` \(type: string\): The namespace identifying the ICF authenticated subject. Only present if the `require-whisk-auth` annotation is set. Click [here](https://github.com/apache/openwhisk/blob/master/docs/annotations.md#annotations-specific-to-web-action) for more information.
+
+Web actions otherwise receive query and body parameters as first class properties in the action arguments. Body parameters take precedence over query parameters, which in turn take precedence over action and package parameters.
+
+{% hint style="tip" %}
+Web actions can also be [enabled to handle raw HTTP requests](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-actions_web#actions_web_raw_enable). This setting allows the function to directly manage the raw HTTP query string and body content, meaning the actions can receive and process `content-types` other than JSON objects.
 {% endhint %}
 
-## Observations
+## Control HTTP responses
 
-Default parameters are great for handling parameters like authentication keys for APIs. Letting the platform pass them in automatically means you don't have to include these keys in invocation requests or include them in the action source code. Neat, right?
+Web actions can return a JSON object with the following properties to directly control the HTTP response returned to the client:
 
--->
+1. `headers`: A JSON object where the keys are header names and the values are string, number, or boolean values for those headers \(default is no headers\). To send multiple values for a single header, the header's value should be a JSON array of values.
+2. `statusCode`: A valid HTTP status code \(default is 200 OK if body is not empty otherwise 204 No Content\).
+3. `body`: A string which is either plain text, JSON object or array, or a base64 encoded string for binary data \(default is empty response\).
 
+The `body` is considered empty if it is `null`, the empty string `""`, or undefined.
+
+If a `content-type` header value is not declared in the action result’s `headers`, the body is interpreted as `application/json` for non-string values and `text/html` otherwise. When the `content-type` is defined, the controller will determine if the response is binary data or plain text and decode the string using a base64 decoder as needed. Should the body fail to decode correctly, an error is returned to the caller.
+
+## Additional features of web actions
+
+Web actions have many more features. See the ICF [documentation](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-actions_web) for full details on all these capabilities.
+
+### Example - HTTP redirect
+
+If you have a backend URL that keeps changing, you can provide users with a front-end URL backed by a cloud function that performs a seamless redirect.
+
+1. Create a new web action from the following source code in `redirect.js`:
+
+      ```javascript
+      function main() {
+            return {
+                  headers: { location: "https://openwhisk.apache.org/" },
+                  statusCode: 302
+            };
+      }
+      ```
+
+      ```bash
+      ibmcloud fn action create redirect redirect.js --web true
+      ```
+
+      ```bash
+      ok: created action redirect
+      ```
+
+2. Retrieve the URL for a new web action:
+
+      ```bash
+      ibmcloud fn action get redirect --url
+      ```
+
+      ```bash
+      ok: got action redirect
+      https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/redirect
+      ```
+
+3. Check that the HTTP response is indeed an HTTP redirect:
+
+      ```bash
+      curl -v "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/redirect"
+      ```
+
+      ```bash
+      ...
+      < HTTP/1.1 302 Found
+      < X-Backside-Transport: OK OK
+      < Connection: Keep-Alive
+      < Transfer-Encoding: chunked
+      < Server: nginx/1.11.13
+      < Date: Fri, 23 Feb 2018 11:23:24 GMT
+      < Access-Control-Allow-Origin: *
+      < Access-Control-Allow-Methods: OPTIONS, GET, DELETE, POST, PUT, HEAD, PATCH
+      < Access-Control-Allow-Headers: Authorization, Content-Type
+      < location: https://openwhisk.apache.org/
+      ...
+      ```
+
+4. Now try the URL in a browser.
+
+      Did your action successfully redirect to the Apache OpenWhisk project website?
+
+## Web actions with non JSON content types
+
+This section includes a few examples of web actions returning other content types. You can follow along by trying these examples in your browser.
+
+### **Example: HTML response**
+
+If you want to dynamically generate HTML content for web browser access, functions are a great way to do so based upon the latest backend data.
+
+1. Create a new web action named `html` from the following source code in html.js:
+
+      ```javascript
+      function main() {
+         let html = '<html><body><h3><span style="color:red;">Hello World!</span></h3></body></html>'
+         return { headers: { "Content-Type": "text/html" },
+                  statusCode: 200,
+                  body: html };
+      }
+      ```
+
+      ```bash
+      ibmcloud fn action create html html.js --web true
+      ```
+
+      ```bash
+      ok: created action html
+      ```
+
+2. Retrieve the URL for the web action:
+
+      ```bash
+      ibmcloud fn action get html --url
+      ```
+
+      ```bash
+      ok: got action html
+      https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/html
+      ```
+
+3. Check that the HTTP response is HTML and copy and paste that into your browser:
+
+      ```bash
+      curl "https://us-south.functions.cloud.ibm.com/api/v1/web/2ca6a304-a717-4486-ae33-1ba6be11a393/default/html"
+      ```
+
+      ```html
+      <html><body>Hello World!</body></html>
+      ```
+
+### **Example: SVG Response**
+
+You can generate SVG graphics such as statistical or usage graphs based upon live data using a cloud function.
+
+1. Create a new web action named `atom` that has the following code that includes base64-encoded SVG content in the `body`:
+
+      ```javascript
+      // The SVG XML image source has been base64 encoded in the "body" param below:
+      function main() {
+         return { headers: { 'Content-Type': 'image/svg+xml', 'Cache-Control': 'No-Store' },
+            statusCode: 200,
+            body: `PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9Ii01MiAtNTMgMTAwIDEwMCIgc3Ryb2tlLXdpZHRoPSIyIj4NCiA8ZyBmaWxsPSJub25lIj4NCiAgPGVsbGlwc2Ugc3Ryb2tlPSIjNjY4OTlhIiByeD0iNiIgcnk9IjQ0Ii8+DQogIDxlbGxpcHNlIHN0cm9rZT0iI2UxZDg1ZCIgcng9IjYiIHJ5PSI0NCIgdHJhbnNmb3JtPSJyb3RhdGUoLTY2KSIvPg0KICA8ZWxsaXBzZSBzdHJva2U9IiM4MGEzY2YiIHJ4PSI2IiByeT0iNDQiIHRyYW5zZm9ybT0icm90YXRlKDY2KSIvPg0KICA8Y2lyY2xlICBzdHJva2U9IiM0YjU0MWYiIHI9IjQ0Ii8+DQogPC9nPg0KIDxnIGZpbGw9IiM2Njg5OWEiIHN0cm9rZT0id2hpdGUiPg0KICA8Y2lyY2xlIGZpbGw9IiM4MGEzY2YiIHI9IjEzIi8+DQogIDxjaXJjbGUgY3k9Ii00NCIgcj0iOSIvPg0KICA8Y2lyY2xlIGN4PSItNDAiIGN5PSIxOCIgcj0iOSIvPg0KICA8Y2lyY2xlIGN4PSI0MCIgY3k9IjE4IiByPSI5Ii8+DQogPC9nPg0KPC9zdmc+`
+         };
+      }
+      ```
+
+      ```bash
+      ibmcloud fn action create atom atom.js --web true
+      ```
+
+      ```bash
+      ok: updated action atom
+      ```
+
+2. Get the URL for the new atom web action:
+
+      ```bash
+      ibmcloud fn action get atom --url
+      ```
+
+      ```bash
+      ok: got action atom
+      https://us-south.functions.cloud.ibm.com/api/v1/web/josephine.watson%40us.ibm.com_ns/default/atom
+      ```
+
+3. Copy and paste that URL into your browser to see the image!
+
+      ![atom.svg](images/atom.svg)
+
+*If you want, you can save the [unencoded SVG XML source](images/atom.svg) to your local computer and view it in a text editor.*
 
 ### Observations
 
 - **No special code is needed**. You can code with your favorite language!
   - By convention, the `main` function is called. You can always alias "main" to any function in your `.js` file.
 - **No build step**. Runtimes for all supported languages are already deployed in ICF server clusters waiting for your function to be deployed and invoked.
-- **Node.js runtime inferred**. The Node.js runtime was inferred via the function's `.js` extension. ICF will always use the latest supported Node.js runtime version unless you explicitly set another version with the `--kind` flag _This is not discussed in this course_.
-- Your action was installed into an IBM Cloud namespace. This will allow you to apply Identity and Access Management (IAM) control to all actions in a namespace _This is not discussed in this course_.
+- **Node.js runtime inferred**. The Node.js runtime was inferred via the function's `.js` extension. ICF will always use the latest supported Node.js runtime version unless you explicitly set another version with the `--kind` flag.
+- **Package dependencies as ZIP files**.  Complex actions can be constructed by packaging required NPM modules within a ZIP file.
+- **Promises are supported by default** since ICF invokes functions asynchronously.
+- **Creating websites from function output is easy**. You do not need to host a traditional application server to create dynamic content.
+- **Secure namespaces**. Your action executes in an IBM Cloud namespace; a default namespace is used if none is supplied. This allows you to apply Identity and Access Management (IAM) control to all actions in a namespace _which is not included in these examples_.
