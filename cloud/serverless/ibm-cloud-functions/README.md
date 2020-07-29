@@ -564,3 +564,14 @@ You can generate SVG graphics such as statistical or usage graphs based upon liv
 - **Promises are supported by default** since ICF invokes functions asynchronously.
 - **Creating websites from function output is easy**. You do not need to host a traditional application server to create dynamic content.
 - **Secure namespaces**. Your action executes in an IBM Cloud namespace; a default namespace is used if none is supplied. This allows you to apply Identity and Access Management (IAM) control to all actions in a namespace _which is not included in these examples_.
+
+---
+
+### Troubleshooting
+
+* The first step is to make sure you have the latest version of the ICF plugin installed:
+
+```bash
+ibmcloud plugin list
+ibmcloud plugin update
+```
