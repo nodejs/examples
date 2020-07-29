@@ -78,7 +78,7 @@ In order to run these examples, you will need to:
     - [https://cloud.ibm.com/registration](https://cloud.ibm.com/registration)
 
 2. Make sure your account targets a region that supports IBM Cloud Functions using the following link:
-    * [Target a supported regions](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cloudfunctions_regions) using the CLI.
+    * [Target a supported region](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cloudfunctions_regions) using the CLI.
 
 ##### Install the IBM Cloud Command Line Interface (CLI) and Cloud Functions plugin
 
