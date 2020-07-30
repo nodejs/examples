@@ -41,7 +41,7 @@ If you like using ICF, you can sign-up for the *free*, self-study [Cognitve Clas
             * [Blocking invocation (results only)](#blocking-invocation-results-only)
             * [Blocking invocation (full response)](#blocking-invocation-full-response)
             * [Non-blocking invocation](#non-blocking-invocation)
-        * [Invoke with parameters](invoke-with-parameters)
+        * [Invoke with parameters](#invoke-with-parameters)
     * [Hello world with parameters](#hello-world-with-parameters)
         * [Update action](#update-action)
         * [Invoke using command line parameters](#invoke-using-command-line-parameters)
