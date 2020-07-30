@@ -261,11 +261,13 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
 
     <details>
     <summary>Sample output:</summary>
+    
     ```bash
     Datetime   Activation ID  Kind      Start Duration Status  Entity
     y:m:d:hm:s 44794bd6...    nodejs:10 cold  34s      success <NAMESPACE>/hello:0.0.1
     y:m:d:hm:s 6bf1f670...    nodejs:10 warm  2ms      success <NAMESPACE>/hello:0.0.1
     ```
+
     </details>
 
     Note: the last 'N' cached activations are shown.
