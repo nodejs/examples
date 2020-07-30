@@ -232,6 +232,7 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
 
     <details>
     <summary>Sample output:</summary>
+    
     ```json
     ok: got activation 6bf1f670ee614a7eb5af3c9fde813043
     {
@@ -247,6 +248,7 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
       ...
     }
     ```
+
     </details>
 
 4. Retrieve the last activation record:
