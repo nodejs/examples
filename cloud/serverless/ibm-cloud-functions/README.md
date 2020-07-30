@@ -213,11 +213,13 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
 
     <details>
     <summary>Sample output:</summary>
+    
     ```json
     {
         "payload": "Hello World!"
     }
     ```
+
     </details>
 
 3. Retrieve the full activation record. To get the complete activation record use the `activation get` command using the activation ID from the invocation:
