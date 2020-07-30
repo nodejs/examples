@@ -410,7 +410,7 @@ ibmcloud fn action update namegen action.zip --kind nodejs:default
 7. Invoke the action with parameters (block for `-r` result):
 
 ```bash
-ic fn action invoke namegen -p race human -p gender female -r
+ibmcloud fn action invoke namegen -p race human -p gender female -r
 {
     "name": "Aldrella"
 }
