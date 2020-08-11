@@ -18,6 +18,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 These examples will show you how to take Node.js functions and deploy and run them within the IBM Cloud Functions (ICF) Serverless platform. Further examples will show you how to take advantage of some of ICF's built-in features to easily realize the true power of Serverless against some of its top use cases.
 
 If you like using ICF, you can sign-up for the *free*, self-study [Cognitve Class.ai](https://cognitiveclass.ai/) course and get [Acclaim badge](https://www.youracclaim.com/org/ibm/badge/serverless-computing-using-cloud-functions-developer-i) certified:
+
 * [Serverless Computing using Cloud Functions - Developer I course](https://cognitiveclass.ai/courses/serverless-computing-using-cloud-functions-developer-1)
 
 ---
@@ -27,24 +28,24 @@ If you like using ICF, you can sign-up for the *free*, self-study [Cognitve Clas
 * [Background](#background)
 * [Prerequisites](#prerequisites)
 * [Examples](#examples)
-    * [Hello world](#hello-world)
-        * [Create and list action](#create-and-list-action)
-        * [Invoke action](#invoke-action)
-            * [Blocking invocation (results only)](#blocking-invocation-results-only)
-            * [Blocking invocation (full response)](#blocking-invocation-full-response)
-            * [Non-blocking invocation](#non-blocking-invocation)
-        * [Invoke with parameters](#invoke-with-parameters)
-    * [Hello world with parameters](#hello-world-with-parameters)
-        * [Update action](#update-action)
-        * [Invoke using command line parameters](#invoke-using-command-line-parameters)
-        * [Invoke using parameter file](#invoke-using-parameter-file)
-    * [ZIP action](#zip-action)- *packaging npm modules dependencies*
-    * [Asynchronous action](#asynchronous-action) - *using Promises*
-    * [Web actions](#web-actions) - *automatically making action output web-accessible using [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)*
-        * [Hello HTML](#hello-html) - *create HTML content*
-            * [Using query parameters](#using-query-parameters)
-        * [Atomic SVG](#atomic-svg) - *create SVG content*
-    * [Sequencing actions](#sequencing-actions) - *create new actions composed of sequences of existing actions*
+  * [Hello world](#hello-world)
+    * [Create and list action](#create-and-list-action)
+    * [Invoke action](#invoke-action)
+      * [Blocking invocation (results only)](#blocking-invocation-results-only)
+      * [Blocking invocation (full response)](#blocking-invocation-full-response)
+      * [Non-blocking invocation](#non-blocking-invocation)
+    * [Invoke with parameters](#invoke-with-parameters)
+  * [Hello world with parameters](#hello-world-with-parameters)
+    * [Update action](#update-action)
+    * [Invoke using command line parameters](#invoke-using-command-line-parameters)
+    * [Invoke using parameter file](#invoke-using-parameter-file)
+  * [ZIP action](#zip-action)- *packaging npm modules dependencies*
+  * [Asynchronous action](#asynchronous-action) - *using Promises*
+  * [Web actions](#web-actions) - *automatically making action output web-accessible using [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)*
+    * [Hello HTML](#hello-html) - *create HTML content*
+      * [Using query parameters](#using-query-parameters)
+    * [Atomic SVG](#atomic-svg) - *create SVG content*
+  * [Sequencing actions](#sequencing-actions) - *create new actions composed of sequences of existing actions*
 
 * [Observations](#observations)
 
@@ -68,7 +69,7 @@ Actions can also call other actions or even be composed into sequence of actions
 
 In order to run these examples, you will need to:
 
-##### Register for and configure a free IBM Cloud Account
+**Register for and configure a free IBM Cloud Account**
 
 1. Register for a free IBM Cloud account using the linked instructions:
     - [https://cloud.ibm.com/registration](https://cloud.ibm.com/registration)
@@ -76,7 +77,7 @@ In order to run these examples, you will need to:
 2. Make sure your account targets a region that supports IBM Cloud Functions using the following link:
     * [Target a supported region](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cloudfunctions_regions) using the CLI.
 
-##### Install the IBM Cloud Command Line Interface (CLI) and Cloud Functions plugin
+**Install the IBM Cloud Command Line Interface (CLI) and Cloud Functions plugin**
 
 1. Install the [IBM Cloud Command Line Interface (CLI)](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started) by following the steps outlined on the linked page.
 
