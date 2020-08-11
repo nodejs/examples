@@ -672,23 +672,21 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
     }
     ```
 
-#### Observations
-
-*The use of sequences is an advanced technique that can bring serverless applications to life, but even more advanced compositions are possible using conditional logic constructs that are not covered in these examples.*
+*The use of sequences is an advanced technique that can bring serverless applications to life, but even more **advanced compositions** are possible using conditional logic constructs that are not covered in these examples.*
 
 ---
 
 ## Observations
 
-- **No special code is needed**. You can code with your favorite language!
+* **No special code is needed**. You can code with your favorite language!
   - By convention, the `main` function is called. You can always alias "main" to any function in your `.js` file.
-- **No build step**. Runtimes for all supported languages are already deployed in ICF server clusters waiting for your function to be deployed and invoked.
-- **Node.js runtime inferred**. The Node.js runtime was inferred via the function's `.js` extension. ICF will always use the latest supported Node.js runtime version unless you explicitly set another version with the `--kind` flag.
-- **Package dependencies as ZIP files**. Complex actions can be constructed by packaging required npm modules within a ZIP file.
-- **Promises are supported by default** since ICF invokes functions asynchronously.
-- **Creating websites from function output is easy**. You do not need to host a traditional application server to create dynamic content.
-- Composing existing actions into new actions using **Sequences** can allow you to create powerful data transformation pipelines.
-- **Secure namespaces**. Your action executes in an IBM Cloud namespace; a default namespace is used if none is supplied. This allows you to apply Identity and Access Management (IAM) control to all actions in a namespace _which is not included in these examples_.
+* **No build step**. Runtimes for all supported languages are already deployed in ICF server clusters waiting for your function to be deployed and invoked.
+* **Node.js runtime inferred**. The Node.js runtime was inferred via the function's `.js` extension. ICF will always use the latest supported Node.js runtime version unless you explicitly set another version with the `--kind` flag.
+* **Package dependencies as ZIP files**. Complex actions can be constructed by packaging required npm modules within a ZIP file.
+* **Promises are supported by default** since ICF invokes functions asynchronously.
+* **Creating websites from function output is easy**. You do not need to host a traditional application server to create dynamic content.
+* Composing existing actions into new actions using **Sequences** can allow you to create powerful data transformation pipelines.
+* **Secure namespaces**. Your action executes in an IBM Cloud namespace; a default namespace is used if none is supplied. This allows you to apply Identity and Access Management (IAM) control to all actions in a namespace _which is not included in these examples_.
 
 ---
 
