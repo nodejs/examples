@@ -1,19 +1,11 @@
 <!--
-#
-# Copyright [2020] [IBM Corporation]
-#
-# Licensed under the Apache License, Version 2.0 (the "License");
-# you may not use this file except in compliance with the License.
-# You may obtain a copy of the License at
-#
-#    http://www.apache.org/licenses/LICENSE-2.0
-#
-# Unless required by applicable law or agreed to in writing, software
-# distributed under the License is distributed on an "AS IS" BASIS,
-# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
-# See the License for the specific language governing permissions and
-# limitations under the License.
-#
+Copyright 2020 IBM Corporation
+
+Permission is hereby granted, free of charge, to any person obtaining a copy of this software and associated documentation files (the "Software"), to deal in the Software without restriction, including without limitation the rights to use, copy, modify, merge, publish, distribute, sublicense, and/or sell copies of the Software, and to permit persons to whom the Software is furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM, OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE SOFTWARE.
 -->
 
 <!--
@@ -23,7 +15,7 @@
 
 # IBM Cloud Functions using Node.js
 
-These examples will show you how to take Node.js functions and deploy and run them within the IBM Cloud Functions (ICF) Serverless platform.  Further examples will show you how to take advantage of some of ICF's built-in features to easily realize the true power of Serverless against some of its top use cases.
+These examples will show you how to take Node.js functions and deploy and run them within the IBM Cloud Functions (ICF) Serverless platform. Further examples will show you how to take advantage of some of ICF's built-in features to easily realize the true power of Serverless against some of its top use cases.
 
 If you like using ICF, you can sign-up for the *free*, self-study [Cognitve Class.ai](https://cognitiveclass.ai/) course and get [Acclaim badge](https://www.youracclaim.com/org/ibm/badge/serverless-computing-using-cloud-functions-developer-i) certified:
 * [Serverless Computing using Cloud Functions - Developer I course](https://cognitiveclass.ai/courses/serverless-computing-using-cloud-functions-developer-1)
@@ -68,7 +60,7 @@ The ICF platform is based upon the [Apache OpenWhisk](https://openwhisk.apache.o
 
 ![Programming model](images/ICF-Programming-Model.png)
 
-Actions can also call other actions or even be composed into sequence of actions.  There are even specialized actions called *Web actions* that are annotated making them publicly accessible to quickly enable you to build web based applications and handle HTTP data directly with any `Content-Type`.
+Actions can also call other actions or even be composed into sequence of actions. There are even specialized actions called *Web actions* that are annotated making them publicly accessible to quickly enable you to build web based applications and handle HTTP data directly with any `Content-Type`.
 
 ---
 
@@ -140,7 +132,7 @@ The following steps and examples demonstrate how to create your first JavaScript
 
 After you create your action, you can run it on ICF with the `invoke` command using one of two modes:
 
-- **[Blocking](#blocking)** - A blocking invocation request will wait for the activation result to be available.  This is done by specifying the `--blocking` flag on the command line.
+- **[Blocking](#blocking)** - A blocking invocation request will wait for the activation result to be available. This is done by specifying the `--blocking` flag on the command line.
 - **[Non-blocking](#non-blocking)** - A non-blocking invocation will invoke the action immediately, but not wait for a response.
 
 ##### Blocking invocation (results only)
@@ -187,7 +179,7 @@ If you wish to wait for the full HTTP response, simply use the `--blocking` flag
       ...
     ```
 
-    * **Note**: Blocking requests wait for the lesser of 60 seconds or the action's configured [time limit](https://github.com/apache/incubator-openwhisk/blob/master/docs/reference.md#per-action-timeout-ms-default-60s).  Actions that take longer will still keep running, but wou will have use the *Activation ID* to lookup the results later just like a non-blocking invocation.
+    * **Note**: Blocking requests wait for the lesser of 60 seconds or the action's configured [time limit](https://github.com/apache/incubator-openwhisk/blob/master/docs/reference.md#per-action-timeout-ms-default-60s). Actions that take longer will still keep running, but wou will have use the *Activation ID* to lookup the results later just like a non-blocking invocation.
 
 ##### Non-blocking invocation
 
@@ -345,7 +337,7 @@ You can also pass parameters from a file containing the desired content in JSON 
 
 ### ZIP action
 
-The NodeJS runtime, where your function executes, has a [fixed list of installed NPM modules](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-runtimes#openwhisk_ref_javascript_environments).  If you require more NPM modules, you can ZIP them with your action code.
+The NodeJS runtime, where your function executes, has a [fixed list of installed NPM modules](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-runtimes#openwhisk_ref_javascript_environments). If you require more NPM modules, you can ZIP them with your action code.
 
 ##### Fantasy name generator
 
@@ -459,7 +451,7 @@ Notice that the `main` function returns a promise, which indicates that the acti
 
    Notice that you performed a blocking invocation of an asynchronous action.
 
-2. Fetch the last activation log to see how long the async activation took to complete:
+2. Fetch the last activation log to see how long the async. activation took to complete:
 
    ```text
    ibmcloud fn activation get --last
@@ -481,7 +473,7 @@ Notice that the `main` function returns a promise, which indicates that the acti
 
 Web actions are actions that can be called externally using the HTTP protocol from clients like `curl` or web browsers. IBM Cloud Functions (ICF) provides a simple flag, `--web true`, which causes it to automatically create an HTTP accessible URL (endpoint) for any action.
 
-These example here will only give you a basic idea of what is possible.  To see more read [Creating web actions](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-actions_web.)
+These example here will only give you a basic idea of what is possible. To see more read [Creating web actions](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-actions_web.)
 
 #### Hello HTML
 
@@ -691,7 +683,7 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
   - By convention, the `main` function is called. You can always alias "main" to any function in your `.js` file.
 - **No build step**. Runtimes for all supported languages are already deployed in ICF server clusters waiting for your function to be deployed and invoked.
 - **Node.js runtime inferred**. The Node.js runtime was inferred via the function's `.js` extension. ICF will always use the latest supported Node.js runtime version unless you explicitly set another version with the `--kind` flag.
-- **Package dependencies as ZIP files**.  Complex actions can be constructed by packaging required NPM modules within a ZIP file.
+- **Package dependencies as ZIP files**. Complex actions can be constructed by packaging required NPM modules within a ZIP file.
 - **Promises are supported by default** since ICF invokes functions asynchronously.
 - **Creating websites from function output is easy**. You do not need to host a traditional application server to create dynamic content.
 - Composing existing actions into new actions using **Sequences** can allow you to create powerful data transformation pipelines.

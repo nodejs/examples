@@ -7,10 +7,10 @@ In this directory, we have examples of using Node.js with technologies that are 
 Anything that is related to deployment of Node.js applications to the cloud. For example:
 
 - Containers (Docker)
-- Serverless (AWS Lambda, Azure Functions, Google Cloud Functions, Google Cloud Run, IBM Cloud Functions, OpenFaaS, Serverless Framework)
-- Orchestration (Kubernetes, OpenShift, Terraform)
-- Cloud-specific (Alibaba Cloud, AWS, DigitalOcean, GCP, IBM Cloud, MS Azure, Oracle Cloud)
-- Edge / Tiny Clouds (Begin, CloudFlare Workers, Glitch, Heroku, Netlify, Now, Surge)
+- Serverless (Serverless Framework, OpenFaaS, AWS Lambda, Google Cloud Functions, Google Cloud Run, Azure Functions, IBM Cloud Functions)
+- Orchestration (Kubernetes, Terraform, OpenShift)
+- Cloud-specific (AWS, GCP, Azure, IBM Cloud, DigitalOcean, Alibaba Cloud, Oracle Cloud)
+- Tiny Clouds (Netlify, Now, Glitch, CloudFlare Workers, Heroku, Surge, Begin)
 
 ## Contributing to Examples
 
