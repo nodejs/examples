@@ -679,7 +679,7 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
 ## Observations
 
 * **No special code is needed**. You can code with your favorite language!
-  - By convention, the `main` function is called. You can always alias "main" to any function in your `.js` file.
+  * By convention, the `main` function is called. You can always alias "main" to any function in your `.js` file.
 * **No build step**. Runtimes for all supported languages are already deployed in ICF server clusters waiting for your function to be deployed and invoked.
 * **Node.js runtime inferred**. The Node.js runtime was inferred via the function's `.js` extension. ICF will always use the latest supported Node.js runtime version unless you explicitly set another version with the `--kind` flag.
 * **Package dependencies as ZIP files**. Complex actions can be constructed by packaging required npm modules within a ZIP file.
