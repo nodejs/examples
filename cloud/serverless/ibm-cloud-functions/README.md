@@ -72,7 +72,7 @@ In order to run these examples, you will need to:
 ### Register for and configure a free IBM Cloud Account
 
 1. Register for a free IBM Cloud account using the linked instructions:
-    - [https://cloud.ibm.com/registration](https://cloud.ibm.com/registration)
+    * [https://cloud.ibm.com/registration](https://cloud.ibm.com/registration)
 
 2. Make sure your account targets a region that supports IBM Cloud Functions using the following link:
     * [Target a supported region](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cloudfunctions_regions) using the CLI.
@@ -133,8 +133,8 @@ The following steps and examples demonstrate how to create your first JavaScript
 
 After you create your action, you can run it on ICF with the `invoke` command using one of two modes:
 
-- **[Blocking](#blocking)** - A blocking invocation request will wait for the activation result to be available. This is done by specifying the `--blocking` flag on the command line.
-- **[Non-blocking](#non-blocking)** - A non-blocking invocation will invoke the action immediately, but not wait for a response.
+* **[Blocking](#blocking)** - A blocking invocation request will wait for the activation result to be available. This is done by specifying the `--blocking` flag on the command line.
+* **[Non-blocking](#non-blocking)** - A non-blocking invocation will invoke the action immediately, but not wait for a response.
 
 ##### Blocking invocation (results only)
 
@@ -351,7 +351,7 @@ mdkir namegen
 cd namegen
 ```
 
-2. Create `namegen.js` with the following code:
+1. Create `namegen.js` with the following code:
 
 ```javascript
 function namegen(params) {
@@ -372,7 +372,7 @@ function namegen(params) {
 exports.main = namegen;
 ```
 
-3. Create `package.json` with these contents:
+1. Create `package.json` with these contents:
 
 ```javascript
 {
@@ -386,19 +386,19 @@ exports.main = namegen;
 }
 ```
 
-4. Install npm required modules locally:
+1. Install npm required modules locally:
 
 ```bash
 npm install
 ```
 
-5. ZIP the project files with local `node_modules`:
+1. ZIP the project files with local `node_modules`:
 
 ```bash
 zip -r action.zip *
 ```
 
-6. Create the action
+1. Create the action
 
 Since a ZIP action does not have a `.js` extension, we must use the `--kind` parameter to tell ICF what runtime and version to use (`default` to latest in this example):
 
@@ -406,7 +406,7 @@ Since a ZIP action does not have a `.js` extension, we must use the `--kind` par
 ibmcloud fn action update namegen action.zip --kind nodejs:default
 ```
 
-7. Invoke the action with parameters (block for `-r` result):
+1. Invoke the action with parameters (block for `-r` result):
 
 ```bash
 ibmcloud fn action invoke namegen -p race human -p gender female -r
@@ -434,7 +434,7 @@ function main(args) {
 
 Notice that the `main` function returns a promise, which indicates that the activation hasn't completed yet, but is expected to in the future.
 
-2. Create the action and invoke it:
+1. Create the action and invoke it:
 
    ```bash
    ibmcloud fn action create asyncAction asyncAction.js
@@ -452,7 +452,7 @@ Notice that the `main` function returns a promise, which indicates that the acti
 
    Notice that you performed a blocking invocation of an asynchronous action.
 
-2. Fetch the last activation log to see how long the async. activation took to complete:
+1. Fetch the last activation log to see how long the async. activation took to complete:
 
    ```text
    ibmcloud fn activation get --last
@@ -495,7 +495,7 @@ If you want to dynamically generate HTML content for web browser access, functio
       ibmcloud fn action create html html.js --web true
       ```
 
-2. Retrieve the URL for the web action:
+1. Retrieve the URL for the web action:
 
       ```bash
       ibmcloud fn action get html --url
@@ -506,11 +506,11 @@ If you want to dynamically generate HTML content for web browser access, functio
       https://us-south.functions.appdomain.cloud/api/v1/web/3cc8e80c-1e29-4d99-b530-a89bf13fee32/default/html
       ```
 
-3. Copy and paste the link into your browser:
+1. Copy and paste the link into your browser:
 
 ##### Using query parameters
 
-4. Append the following query parameter at the end if the URL and refresh your browser:
+1. Append the following query parameter at the end if the URL and refresh your browser:
 
     ```bash
     ?name=Hanna
@@ -532,13 +532,13 @@ You can generate SVG graphics such as statistical or usage graphs based upon liv
       }
       ```
 
-2. Create a web action named `atom`:
+1. Create a web action named `atom`:
 
       ```bash
       ibmcloud fn action create atom atom.js --web true
       ```
 
-3. Get the URL for the new atom web action:
+1. Get the URL for the new atom web action:
 
       ```bash
       ibmcloud fn action get atom --url
@@ -549,7 +549,7 @@ You can generate SVG graphics such as statistical or usage graphs based upon liv
       https://us-south.functions.cloud.ibm.com/api/v1/web/josephine.watson%40us.ibm.com_ns/default/atom
       ```
 
-3. Copy and paste the URL into your browser to see the image!
+1. Copy and paste the URL into your browser to see the image!
 
       ![atom.svg](images/atom.svg)
 
@@ -585,7 +585,7 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
     }
     ```
 
-2. Create the following three actions:
+1. Create the following three actions:
 
     ```bash
     ibmcloud fn action create split funcs.js --main split
@@ -601,7 +601,7 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
 
 *Notice how our JavaScript source code had no `main` function. Instead, when we created each action, we supplied the name of the function to be used as its `main` function using the flag `--main`.*
 
-3. Test each action to verify it is working.
+1. Test each action to verify it is working.
 
     The function `split` takes the single string `hello world` and splits it into a JSON map of the individual `strings` using the space character as the delimiter.
 
@@ -654,13 +654,13 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
     ```
     </details>
 
-2. Create the following action sequence:
+1. Create the following action sequence:
 
     ```bash
     ibmcloud fn action create reverse_words --sequence split,reverse,join
     ```
 
-3. Test out the action sequence:
+1. Test out the action sequence:
 
     ```bash
     ibmcloud fn action invoke reverse_words --result --param text "hello world"
