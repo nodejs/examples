@@ -6,8 +6,9 @@
   "scripts": {
     "test:unit": "jest --coverage",
     "test:onlychanged": "jest --onlyChanged --coverage",
+    "test:markdown": "markdownlint . --ignore ./node_modules",
     "lint": "standard",
-    "test": "npm run lint && npm run test:unit"
+    "test": "npm run lint && npm run test:unit && npm run test:markdown"
   },
   "keywords": [],
   "author": "Tierney Cyren <hello@bnb.im>",
