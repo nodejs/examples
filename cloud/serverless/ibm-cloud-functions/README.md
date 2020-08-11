@@ -38,7 +38,7 @@ If you like using ICF, you can sign-up for the *free*, self-study [Cognitve Clas
         * [Update action](#update-action)
         * [Invoke using command line parameters](#invoke-using-command-line-parameters)
         * [Invoke using parameter file](#invoke-using-parameter-file)
-    * [ZIP action](#zip-action)- *packaging NPM modules dependencies*
+    * [ZIP action](#zip-action)- *packaging npm modules dependencies*
     * [Asynchronous action](#asynchronous-action) - *using Promises*
     * [Web actions](#web-actions) - *automatically making action output web-accessible using [CORS](https://en.wikipedia.org/wiki/Cross-origin_resource_sharing)*
         * [Hello HTML](#hello-html) - *create HTML content*
@@ -337,11 +337,11 @@ You can also pass parameters from a file containing the desired content in JSON 
 
 ### ZIP action
 
-The NodeJS runtime, where your function executes, has a [fixed list of installed NPM modules](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-runtimes#openwhisk_ref_javascript_environments). If you require more NPM modules, you can ZIP them with your action code.
+The NodeJS runtime, where your function executes, has a [fixed list of installed npm modules](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-runtimes#openwhisk_ref_javascript_environments). If you require more npm modules, you can ZIP them with your action code.
 
 ##### Fantasy name generator
 
-This example shows how to package a fun NPM module called [Fantasy Name Generator](https://www.npmjs.com/package/fantasy-name-generator) with an action function.
+This example shows how to package a fun npm module called [Fantasy Name Generator](https://www.npmjs.com/package/fantasy-name-generator) with an action function.
 
 1. Create a project directory and change into it:
 
@@ -385,7 +385,7 @@ exports.main = namegen;
 }
 ```
 
-4. Install NPM required modules locally:
+4. Install npm required modules locally:
 
 ```bash
 npm install
@@ -683,7 +683,7 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
   - By convention, the `main` function is called. You can always alias "main" to any function in your `.js` file.
 - **No build step**. Runtimes for all supported languages are already deployed in ICF server clusters waiting for your function to be deployed and invoked.
 - **Node.js runtime inferred**. The Node.js runtime was inferred via the function's `.js` extension. ICF will always use the latest supported Node.js runtime version unless you explicitly set another version with the `--kind` flag.
-- **Package dependencies as ZIP files**. Complex actions can be constructed by packaging required NPM modules within a ZIP file.
+- **Package dependencies as ZIP files**. Complex actions can be constructed by packaging required npm modules within a ZIP file.
 - **Promises are supported by default** since ICF invokes functions asynchronously.
 - **Creating websites from function output is easy**. You do not need to host a traditional application server to create dynamic content.
 - Composing existing actions into new actions using **Sequences** can allow you to create powerful data transformation pipelines.
