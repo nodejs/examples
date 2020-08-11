@@ -69,7 +69,7 @@ Actions can also call other actions or even be composed into sequence of actions
 
 In order to run these examples, you will need to:
 
-**Register for and configure a free IBM Cloud Account**
+### Register for and configure a free IBM Cloud Account
 
 1. Register for a free IBM Cloud account using the linked instructions:
     - [https://cloud.ibm.com/registration](https://cloud.ibm.com/registration)
@@ -77,7 +77,7 @@ In order to run these examples, you will need to:
 2. Make sure your account targets a region that supports IBM Cloud Functions using the following link:
     * [Target a supported region](https://cloud.ibm.com/docs/openwhisk?topic=cloud-functions-cloudfunctions_regions) using the CLI.
 
-**Install the IBM Cloud Command Line Interface (CLI) and Cloud Functions plugin**
+### Install the IBM Cloud Command Line Interface (CLI) and Cloud Functions plugin
 
 1. Install the [IBM Cloud Command Line Interface (CLI)](https://cloud.ibm.com/docs/cli?topic=cloud-cli-getting-started) by following the steps outlined on the linked page.
 
