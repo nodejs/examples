@@ -340,7 +340,7 @@ You can also pass parameters from a file containing the desired content in JSON 
 
 The NodeJS runtime, where your function executes, has a [fixed list of installed npm modules](https://cloud.ibm.com/docs/openwhisk?topic=openwhisk-runtimes#openwhisk_ref_javascript_environments). If you require more npm modules, you can ZIP them with your action code.
 
-##### Fantasy name generator
+#### Fantasy name generator
 
 This example shows how to package a fun npm module called [Fantasy Name Generator](https://www.npmjs.com/package/fantasy-name-generator) with an action function.
 
