@@ -17,7 +17,7 @@ THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR IMPLI
 
 These examples will show you how to take Node.js functions and deploy and run them within the IBM Cloud Functions (ICF) Serverless platform. Further examples will show you how to take advantage of some of ICF's built-in features to easily realize the true power of Serverless against some of its top use cases.
 
-If you like using ICF, you can sign-up for the *free*, self-study [Cognitve Class.ai](https://cognitiveclass.ai/) course and get [Acclaim badge](https://www.youracclaim.com/org/ibm/badge/serverless-computing-using-cloud-functions-developer-i) certified:
+If you like using ICF, you can sign-up for the *free*, self-study [Cognitive Class.ai](https://cognitiveclass.ai/) course and get [Acclaim badge](https://www.youracclaim.com/org/ibm/badge/serverless-computing-using-cloud-functions-developer-i) certified:
 
 * [Serverless Computing using Cloud Functions - Developer I course](https://cognitiveclass.ai/courses/serverless-computing-using-cloud-functions-developer-1)
 
@@ -204,16 +204,13 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
 
     You should see similar output as when you previously used the `--result` flag on the `invoke` command.
 
-    <details>
-    <summary>Sample output:</summary>
+    Sample output:
 
     ```json
     {
         "payload": "Hello World!"
     }
     ```
-
-    </details>
 
 3. Retrieve the full activation record. To get the complete activation record use the `activation get` command using the activation ID from the invocation:
 
@@ -223,8 +220,7 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
 
     You should see the complete activation record as when you previously sed the `--blocking` flag on the `invoke` command.
 
-    <details>
-    <summary>Sample output:</summary>
+    Sample output:
 
     ```json
     ok: got activation 6bf1f670ee614a7eb5af3c9fde813043
@@ -242,30 +238,25 @@ A non-blocking invocation will invoke the action immediately, but not wait for a
     }
     ```
 
-    </details>
-
 4. Retrieve the last activation record:
 
     ```bash
     ibmcloud fn activation get --last
     ```
 
-5. Retrieve the msot recent recent activation list:
+5. Retrieve the most recent recent activation list:
 
     ```bash
     ibmcloud fn activation list
     ```
 
-    <details>
-    <summary>Sample output:</summary>
+    Sample output:
 
     ```bash
     Datetime   Activation ID  Kind      Start Duration Status  Entity
     y:m:d:hm:s 44794bd6...    nodejs:10 cold  34s      success <NAMESPACE>/hello:0.0.1
     y:m:d:hm:s 6bf1f670...    nodejs:10 warm  2ms      success <NAMESPACE>/hello:0.0.1
     ```
-
-    </details>
 
     Note: the last 'N' cached activations are shown.
 
@@ -609,8 +600,8 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
     ibmcloud fn action invoke split --result --param text "Hello world"
     ```
 
-    <details>
-    <summary>Sample output:</summary>
+    Sample output:
+
     ```json
     {
         "words": [
@@ -619,7 +610,6 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
         ]
     }
     ```
-    </details>
 
     The function `reverse` takes a JSON array of `strings` and reverses the characters in each.
 
@@ -627,8 +617,8 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
     ibmcloud fn action invoke reverse --result --param words '["hello", "world"]'
     ```
 
-    <details>
-    <summary>Sample output:</summary>
+    Sample output:
+
     ```json
     {
         "words": [
@@ -637,7 +627,6 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
         ]
     }
     ```
-    </details>
 
     The function `join` takes the JSON array of `strings` and concatenates them back into a space-delimited string.
 
@@ -645,14 +634,13 @@ IBM Cloud Functions (ICF) supports a kind of action called a sequence. Sequence 
     ibmcloud fn action invoke join --result --param words '["hello", "world"]'
     ```
 
-    <details>
-    <summary>Sample output:</summary>
+    Sample output:
+
     ```json
     {
         "text": "hello world"
     }
     ```
-    </details>
 
 1. Create the following action sequence:
 
