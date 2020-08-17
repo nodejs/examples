@@ -1,0 +1,15 @@
+version: "3"
+services:
+  fastify-session-with-redis:
+    build: .
+    ports:
+      - "3000:3000"
+    volumes:
+      - .:/home/node/code
+      - /home/node/code/node_modules
+    depends_on:
+      - redis
+  redis:
+    image: redis:6.0.5
+    ports:
+      - "6379:6379"
