@@ -3,7 +3,7 @@ All the code examples are compliant with the [standard](https://standardjs.com/i
 world example goes into more detail than subsequent examples as it is intended for possible newbies.
 
 ## Instructions
-Run the fastify **hello-world.js** file with nodeJS at the command line.
+Run the fastify [hello-world.js](./hello-world.js) file with nodeJS at the command line.
 
 ```
 node hello-world.js
@@ -53,20 +53,11 @@ fastify.get('/', async (request, reply) => {
   return { hello: 'world' }
 })
 
-// Run the server!
-const start = async () => {
-  try {
-    await fastify.listen(3000)
-    fastify.log.info(`server listening on ${fastify.server.address().port}`)
-  } catch (err) {
-    fastify.log.error(err)
-    process.exit(1)
-  }
-}
-start()
+fastify.listen(APP_PORT, () => fastify.log.info(`server listening on ${fastify.server.address().port}`))
 ```
 
-**Fastify** is required into the application and called immediately. 
+**Fastify** is required into the application and called immediately with a configuration object. The object sets fastify's
+logging to true.
 
 ```javascript
 const fastify = require('fastify')({ logger: true })
@@ -95,21 +86,11 @@ Note that the reply object is simply returned and that the handling function is 
 Lets see how the server is being started
 
 ```javascript
-const start = async () => {
-  try {
-    await fastify.listen(3000)
-    fastify.log.info(`server listening on ${fastify.server.address().port}`)
-  } catch (err) {
-    fastify.log.error(err)
-    process.exit(1)
-  }
-}
-start()
+fastify.listen(APP_PORT, () => fastify.log.info(`server listening on ${fastify.server.address().port}`))
 ```
 
-The **start** function is created. Note it is an asynchronous function. The **listen** function on fastify is called 
-with a port number of **3000**. 
-The **start** function once called will cause **fastify** to listen on port 3000 for requests to the base route '/'.
+The **listen** function is called upon fastify and provided with a port number and a callback.
+
 
 ## Hello World, with an asynchronous response
 
@@ -128,4 +109,22 @@ fastify.get('/', async (request, reply) => {
 })
 ```
 
-Whats going on here? The route handler sets a timer to simulate asychronous behavior.
+Whats going on here? The route handler sets a timer to simulate asynchronous behavior. In addition the call to fastify
+is provided no callback. When no callback is given fastify returns a promise. We are now starting fastify within an 
+asynchronous function.
+
+```javascript
+
+// Run the server!
+const start = async () => {
+  try {
+    // if no callback is give a promise is returned
+    await fastify.listen(3000)
+    fastify.log.info(`server listening on ${fastify.server.address().port}`)
+  } catch (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+}
+start()
+```

@@ -15,6 +15,7 @@ fastify.get('/', async (request, reply) => {
 // Run the server!
 const start = async () => {
   try {
+    // if no callback is give a promise is returned
     await fastify.listen(3000)
     fastify.log.info(`server listening on ${fastify.server.address().port}`)
   } catch (err) {
