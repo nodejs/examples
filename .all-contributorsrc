@@ -31,6 +31,15 @@
         "infra",
         "ideas"
       ]
+    },
+    {
+      "login": "ghinks",
+      "name": "Glenn",
+      "avatar_url": "https://avatars3.githubusercontent.com/u/5049078?v=4",
+      "profile": "http://glennhinks.com/",
+      "contributions": [
+        "code"
+      ]
     }
   ],
   "contributorsPerLine": 7
