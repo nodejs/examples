@@ -2,9 +2,9 @@
 
 A common use case for a web framework is to provide session storage. Fastify has a [concept of plugins](https://www.fastify.io/docs/latest/Plugins-Guide/)
 and the plugin for session is [fastify-session](https://github.com/SerayaEryn/fastify-session). These examples
-will demonstrate server side session storage. 
+will demonstrate server side session storage.
 
-## Simple local http session demonstration using local storage 
+## Simple local http session demonstration using local storage
 
 [http-session-server](./http-session-server/http-session-server.js)
 
@@ -15,14 +15,13 @@ you would want to use a network based storage mechanism. In order to scale your 
 would need to share the session storage between multiple instances of the same program so that any particular
 cookied request would find its own session.
 
-In this example in adddition to requiring fastify there are two additional modules being required. These are 
+In this example in addition to requiring fastify there are two additional modules being required. These are
 
 - [fastify-session](https://www.npmjs.com/package/fastify-session)
 - [fastify-cookie](https://www.npmjs.com/package/fastify-cookie)
 
 The fastify cookie plugin will add support to read and set cookie headers. The fastify session plugin provides session
 based storage on the localhost.
-
 
 ## Simple local https session demonstration using local storage
 
@@ -45,12 +44,12 @@ commands are similar for osx.
 
 A more realistic example of creating a session on fastify would involve using a network based store. This would allow
 multiple instances fastify to access the session data when a cookie is sent.
-In order to run this you either have to have a local [redis](https://redislabs.com/get-started-with-redis/) running or 
+In order to run this you either have to have a local [redis](https://redislabs.com/get-started-with-redis/) running or
 use docker. If you have [docker](https://www.docker.com/products/docker-desktop) installed then can simple bring the
 service up
 
 ```shell script
-docker-compose up 
+docker-compose up
 ```
 
 The server will be running on port 3000 and the session will be stored in the redis cache.
