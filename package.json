@@ -6,8 +6,9 @@
   "scripts": {
     "test:unit": "jest --coverage",
     "test:onlychanged": "jest --onlyChanged --coverage",
+    "test:markdown": "markdownlint . --ignore ./node_modules",
     "lint": "standard",
-    "test": "npm run lint && npm run test:unit"
+    "test": "npm run lint && npm run test:unit && npm run test:markdown"
   },
   "keywords": [],
   "author": "Tierney Cyren <hello@bnb.im>",
@@ -15,6 +16,7 @@
   "devDependencies": {
     "all-contributors-cli": "^6.14.0",
     "jest": "^25.2.6",
+    "markdownlint-cli": "^0.23.2",
     "standard": "^14.3.3"
   },
   "dependencies": {
