@@ -117,3 +117,4 @@ dist
 # ignore lockfiles
 package-lock.json
 yarn.lock
+./servers/fastify/hello-world/node_modules

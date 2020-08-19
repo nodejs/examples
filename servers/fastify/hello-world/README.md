@@ -1,17 +1,19 @@
 # Fastify Hello World
+
 All the code examples are compliant with the [standard](https://standardjs.com/index.html) linting style. This hello
 world example goes into more detail than subsequent examples as it is intended for possible newbies.
 
 ## Instructions
+
 Run the fastify [hello-world.js](./hello-world.js) file with nodeJS at the command line.
 
-```
+```shell script
 node hello-world.js
 ```
 
 Fastify is being configured with logging turned on and you should immediately see logs similar to
 
-```
+```text
 {"level":30,"time":1597497138242,"pid":49826,"hostname":"mymachineName.local","msg":"Server listening at http://127.0.0.1:3000"}
 {"level":30,"time":1597497138243,"pid":49826,"hostname":"mymachineName.local","msg":"server listening on 3000"}
 ```
@@ -20,17 +22,17 @@ Fastify is being configured with logging turned on and you should immediately se
 
 Either use [curl](https://curl.haxx.se/) on the command line
 
-```
+```shell script
  curl http://localhost:3000
 ```
 
 or paste this into the browser of your choice
 
-```
+```shell script
 http://localhost:3000/
 ```
 
-you should get the hello world response. The server is responding on the root path with a JSON object 
+you should get the hello world response. The server is responding on the root path with a JSON object
 
 ```json
 {
@@ -40,7 +42,7 @@ you should get the hello world response. The server is responding on the root pa
 
 The format of response will vary depending on your browser and installed plugins.
 
-## Description 
+## Description
 
 Lets look at what is going on here.
 
@@ -63,7 +65,8 @@ logging to true.
 const fastify = require('fastify')({ logger: true })
 ```
 
-This could equally be written as 
+This could equally be written as
+
 ```javascript
 const fastifyServer = require('fastify');
 const fastify = fastifyServer({
@@ -71,7 +74,7 @@ const fastify = fastifyServer({
 })
 ```
 
-The next thing is a **route** is declared. 
+The next thing is a **route** is declared.
 
 ```javascript
 fastify.get('/', async (request, reply) => {
@@ -80,7 +83,7 @@ fastify.get('/', async (request, reply) => {
 ```
 
 This is adding a route to base path '/' that will handle **get** requests on that path. The handling function takes two arguements.
-These are [request](https://www.fastify.io/docs/latest/Request/) and [reply](https://www.fastify.io/docs/latest/Reply/). 
+These are [request](https://www.fastify.io/docs/latest/Request/) and [reply](https://www.fastify.io/docs/latest/Reply/).
 Note that the reply object is simply returned and that the handling function is declared as **async**
 
 Lets see how the server is being started
@@ -90,7 +93,6 @@ fastify.listen(APP_PORT, () => fastify.log.info(`server listening on ${fastify.s
 ```
 
 The **listen** function is called upon fastify and provided with a port number and a callback.
-
 
 ## Hello World, with an asynchronous response
 
@@ -110,7 +112,7 @@ fastify.get('/', async (request, reply) => {
 ```
 
 Whats going on here? The route handler sets a timer to simulate asynchronous behavior. In addition the call to fastify
-is provided no callback. When no callback is given fastify returns a promise. We are now starting fastify within an 
+is provided no callback. When no callback is given fastify returns a promise. We are now starting fastify within an
 asynchronous function.
 
 ```javascript
