@@ -99,7 +99,7 @@ The **listen** function is called upon fastify and provided with a port number a
 The hello-world.js example responded synchronously but what if the reply could not be made synchronously and depended
 on other asynchronous services.
 To simulate an asynchronous response the [hello-world-async.js](./hello-world-async.js) route uses a timer with a 2
-second timeout.
+seconds timeout.
 
 ```javascript
 fastify.get('/', async (request, reply) => {
