@@ -111,7 +111,7 @@ fastify.get('/', async (request, reply) => {
 ```
 
 Whats going on here? The route handler sets a timer to simulate asynchronous behavior. In addition the call to fastify
-is provided no callback. When no callback is given fastify returns a promise. We are now starting fastify within an
+is provided with no callback. When no callback is given fastify returns a promise. We are now starting fastify within an
 asynchronous function.
 
 ```javascript
