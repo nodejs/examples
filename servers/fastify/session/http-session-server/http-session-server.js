@@ -1,3 +1,5 @@
+'use strict'
+
 /* These examples  are based on those from the fastify-session plugin readme */
 
 const Fastify = require('fastify')

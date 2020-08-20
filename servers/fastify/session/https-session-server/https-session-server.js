@@ -1,3 +1,5 @@
+'use strict'
+
 const path = require('path')
 const Fastify = require('fastify')
 const fastifySession = require('fastify-session')
@@ -17,7 +19,6 @@ const { key, cert } = getCertificates()
 
 const fastify = Fastify({
   https: {
-    allowHTTP1: true,
     key,
     cert
   }

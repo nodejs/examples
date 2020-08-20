@@ -43,7 +43,7 @@ commands are similar for osx.
 [https-session-server-redis](./https-session-server-redis/https-session-server-redis.js)
 
 A more realistic example of creating a session on fastify would involve using a network based store. This would allow
-multiple instances fastify to access the session data when a cookie is sent.
+multiple instances of fastify to access the session data when a cookie is sent.
 In order to run this you either have to have a local [redis](https://redislabs.com/get-started-with-redis/) running or
 use docker. If you have [docker](https://www.docker.com/products/docker-desktop) installed then can simple bring the
 service up
