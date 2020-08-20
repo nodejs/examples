@@ -34,7 +34,7 @@ const fastify = Fastify({
 })
 
 fastify.register(fastifyCookie)
-fastify.register(require('fastify-redis'), { host: '127.0.0.1' })
+fastify.register(require('fastify-redis'), { host })
 
 const sessionOptions = {
   secret: 'a secret with minimum length of 32 characters',
@@ -53,4 +53,9 @@ fastify.get('/', (request, reply) => {
   return { hello: `route requested ${request.session.count} times in this session` }
 })
 
-fastify.listen(APP_PORT, '0.0.0.0', fastify.log.info('listening...'))
+fastify.listen(APP_PORT, '0.0.0.0', (err) => {
+  if (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+})
