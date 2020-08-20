@@ -55,7 +55,7 @@ fastify.get('/', async (request, reply) => {
   return { hello: 'world' }
 })
 
-fastify.listen(APP_PORT, () => fastify.log.info(`server listening on ${fastify.server.address().port}`))
+fastify.listen(APP_PORT)
 ```
 
 **Fastify** is required into the application and called immediately with a configuration object. The object sets fastify's
@@ -89,7 +89,7 @@ Note that the reply object is simply returned and that the handling function is 
 Lets see how the server is being started
 
 ```javascript
-fastify.listen(APP_PORT, () => fastify.log.info(`server listening on ${fastify.server.address().port}`))
+fastify.listen(APP_PORT)
 ```
 
 The **listen** function is called upon fastify and provided with a port number and a callback.
@@ -103,10 +103,9 @@ seconds timeout.
 
 ```javascript
 fastify.get('/', async (request, reply) => {
-  await setTimeoutPromise(2000).then(() => {
-    reply.send({
-      "hello": "world"
-    })
+  await setTimeoutPromise(2000)
+  reply.send({
+    "hello": "world"
   })
 })
 ```

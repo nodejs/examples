@@ -5,10 +5,9 @@ const fastify = require('fastify')({ logger: true })
 
 // Declare a route
 fastify.get('/', async (request, reply) => {
-  await setTimeoutPromise(2000).then(() => {
-    reply.send({
-      "hello": "world"
-    })
+  await setTimeoutPromise(2000)
+  reply.send({
+    "hello": "world"
   })
 })
 
