@@ -43,4 +43,9 @@ fastify.get('/', (request, reply) => {
   return { hello: `route requested ${request.session.count} times in this session` }
 })
 
-fastify.listen(APP_PORT, fastify.log.info('listening...'))
+fastify.listen(APP_PORT, function (err) {
+  if (err) {
+    fastify.log.error(err)
+    process.exit(1)
+  }
+})
