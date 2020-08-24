@@ -7,7 +7,7 @@ const fastifyCookie = require('fastify-cookie')
 const fs = require('fs')
 const isDocker = require('is-docker')
 
-const APP_PORT = 3000
+const APP_PORT = process.env.PORT || 3000
 
 // the docker compose service is called redis
 let host = 'localhost'

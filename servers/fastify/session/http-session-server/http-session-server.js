@@ -6,7 +6,7 @@ const Fastify = require('fastify')
 const fastifySession = require('fastify-session')
 const fastifyCookie = require('fastify-cookie')
 
-const APP_PORT = 3000
+const APP_PORT = process.env.PORT || 3000
 const fastify = Fastify({ logger: true })
 fastify.register(fastifyCookie)
 const sessionOptions = {

@@ -6,7 +6,7 @@ const fastifySession = require('fastify-session')
 const fastifyCookie = require('fastify-cookie')
 const fs = require('fs')
 
-const APP_PORT = 3000
+const APP_PORT = process.env.PORT || 3000
 const getCertificates = () => {
   const cert = fs.readFileSync(path.join(__dirname, './certificates/selfsigned.crt'), 'utf-8')
   const key = fs.readFileSync(path.join(__dirname, './certificates/selfsigned.key'), 'utf-8')
