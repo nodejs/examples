@@ -18,6 +18,7 @@ const getCertificates = () => {
 const { key, cert } = getCertificates()
 
 const fastify = Fastify({
+  logger: true,
   https: {
     key,
     cert
@@ -36,7 +37,7 @@ const sessionOptions = {
 }
 fastify.register(fastifySession, sessionOptions)
 
-fastify.get('/', (request, reply) => {
+fastify.get('/', async (request, reply) => {
   if (request.session) {
     request.session.count = request.session.count ? request.session.count + 1 : 1
   }
