@@ -6,14 +6,22 @@ const fastifySession = require('fastify-session')
 const fastifyCookie = require('fastify-cookie')
 const fs = require('fs')
 const isDocker = require('is-docker')
+const redis = require('redis')
+const RedisStore = require('connect-redis')(fastifySession)
 
 const APP_PORT = process.env.PORT || 3000
+const REDIS_PORT = 6379
 
 // the docker compose service is called redis
 let host = 'localhost'
 if (isDocker()) {
   host = 'redis'
 }
+
+const redisClient = redis.createClient({
+  host,
+  port: REDIS_PORT
+})
 
 const getCertificates = () => {
   const cert = fs.readFileSync(path.join(__dirname, './certificates/selfsigned.crt'), 'utf-8')
@@ -34,7 +42,6 @@ const fastify = Fastify({
 })
 
 fastify.register(fastifyCookie)
-fastify.register(require('fastify-redis'), { host })
 
 const sessionOptions = {
   secret: 'a secret with minimum length of 32 characters',
@@ -42,7 +49,8 @@ const sessionOptions = {
   cookie: {
     secure: true,
     maxAge: 1000 * 60 * 3
-  }
+  },
+  store: new RedisStore({ client: redisClient })
 }
 fastify.register(fastifySession, sessionOptions)
 
