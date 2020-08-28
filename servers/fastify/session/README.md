@@ -61,5 +61,6 @@ Each time you hit the url the response will tell you how many times you requeste
 "hello": "route requested 6 times in this session"
 }
 ```
-Note the use of **await** when registering **fastify-redis** as we want the redis client available when we give the 
+
+Note the use of **await** when registering **fastify-redis** as we want the redis client available when we give the
 fastify session its options.
