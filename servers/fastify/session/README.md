@@ -32,7 +32,7 @@ start **fastify** as an https server it is necessary to provide certificates. Lo
 to save the user the difficulty of creating one. This is a command to create certificates.
 
 ```shell script
-penssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout selfsigned.key -out selfsigned.crt -subj "/CN=localhost"
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout selfsigned.key -out selfsigned.crt -subj "/CN=localhost"
 ```
 
 The key and cert are created using [openssl](https://www.openssl.org/) and were created on a linux ubuntu system. The
