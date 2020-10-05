@@ -1,17 +1,6 @@
 const fs = require('fs')
 const path = require('path')
-
-const exist = (dir) => {
-  try {
-    fs.accessSync(
-      dir,
-      fs.constants.F_OK | fs.constants.R_OK | fs.constants.W_OK
-    )
-    return true
-  } catch (e) {
-    return false
-  }
-}
+const { exist } = require('./util')
 
 const rimraf = (p) => {
   if (exist(p)) {
