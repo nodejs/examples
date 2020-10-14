@@ -81,8 +81,7 @@ npm run test
           "modules": "46",
           "lts": "Argon",
           "security": true
-      },
-
+      }
    ```
 
 3. `GET - /latest-releases`
@@ -118,8 +117,7 @@ npm run test
          "modules": "79",
          "lts": false,
          "security": false
-     },
-
+     }
    ```
 
 ### Tests
