@@ -16,8 +16,6 @@ npm run start
 npm run test
 ```
 
----
-
 ## Goals
 
 1. Fetch data from an API and serve JSON content as response
@@ -83,7 +81,7 @@ npm run test
           "modules": "46",
           "lts": "Argon",
           "security": true
-      } ...
+      },
 
    ```
 
@@ -120,11 +118,9 @@ npm run test
          "modules": "79",
          "lts": false,
          "security": false
-     } ...
+     },
 
    ```
-
----
 
 ### Tests
 
@@ -149,8 +145,6 @@ Each of the above endpoints should have its own tests. Use the provided `test/in
   ok 6 v14 version should match
   ok 7 v13 version should match
 ```
-
----
 
 ## Dependencies
 
