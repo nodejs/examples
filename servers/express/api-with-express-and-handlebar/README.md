@@ -82,6 +82,7 @@ This will return the minimum secure version for each release line as JSON. In ot
        "lts": "Argon",
        "security": true
    }
+}
 ```
 
 #### GET - `/api/latest-releases`
@@ -118,6 +119,7 @@ This will return the latest release version in each release line as JSON.
       "lts": false,
       "security": false
   }
+}
 ```
 
 ### Tests
