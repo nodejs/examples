@@ -7,13 +7,13 @@
 ### To run the application
 
 ```bash
-npm run start
+npm start
 ```
 
 ### To run the tests
 
 ```bash
-npm run test
+npm test
 ```
 
 ## Goals
@@ -48,11 +48,11 @@ npm run test
 </html>
 ```
 
-1. `GET - /minimum-secure`
+1. `GET - /api/minimum-secure`
 
    This will return the minimum secure version for each release line as JSON. In other words, what is the highest version of each line that has `security: true`.
 
-#### Example Response `/minimum-secure`
+#### Example Response `/api/minimum-secure`
 
 ```json
 {
@@ -84,11 +84,11 @@ npm run test
    }
 ```
 
-1. `GET - /latest-releases`
+1. `GET - /api/latest-releases`
 
    This will return the latest release version in each release line as JSON.
 
-#### Example Response `/latest-releases`
+#### Example Response `/api/latest-releases`
 
 ```json
 {
@@ -146,17 +146,17 @@ Each of the above endpoints should have its own tests. Use the provided `test/in
 
 ## Dependencies
 
-| Name                                             | Version   | Description                                                       |
-| ------------------------------------------------ | --------- | ----------------------------------------------------------------- |
-| [bent](https://www.npmjs.com/package/bent)       | `^7.3.10` | Functional HTTP client for Node.js and Browsers with async/await. |
-| [express](https://www.npmjs.com/package/express) | `^4.17.1` | Fast, unopinionated, minimalist web framework for node.           |
-| [hbs](https://www.npmjs.com/package/hbs)         | `^4.1.1`  | Express.js view engine for handlebars.js                          |
-| [semver](https://www.npmjs.com/package/semver)   | `^7.3.2`  | The semantic versioner for npm                                    |
+| Name                                             | Description                                                       |
+| ------------------------------------------------ | ----------------------------------------------------------------- |
+| [bent](https://www.npmjs.com/package/bent)       | Functional HTTP client for Node.js and Browsers with async/await. |
+| [express](https://www.npmjs.com/package/express) | Fast, unopinionated, minimalist web framework for node.           |
+| [hbs](https://www.npmjs.com/package/hbs)         | Express.js view engine for handlebars.js                          |
+| [semver](https://www.npmjs.com/package/semver)   | The semantic versioner for npm                                    |
 
 ### Development dependencies
 
-| Name                                               | Version   | Description                                              |
-| -------------------------------------------------- | --------- | -------------------------------------------------------- |
-| [get-port](https://www.npmjs.com/package/get-port) | `^5.1.1`  | Get an available TCP port                                |
-| [nock](https://www.npmjs.com/package/nock)         | `^13.0.4` | HTTP server mocking and expectations library for Node.js |
-| [tape](https://www.npmjs.com/package/tape)         | `^5.0.1`  | tap-producing test harness for node and browsers         |
+| Name                                               | Description                                              |
+| -------------------------------------------------- | -------------------------------------------------------- |
+| [get-port](https://www.npmjs.com/package/get-port) | Get an available TCP port                                |
+| [nock](https://www.npmjs.com/package/nock)         | HTTP server mocking and expectations library for Node.js |
+| [tape](https://www.npmjs.com/package/tape)         | tap-producing test harness for node and browsers         |
