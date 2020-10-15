@@ -24,11 +24,11 @@ npm test
 
 ### Routes
 
-1. `GET - /dependencies`
+#### GET - dependencies
 
-   This will retrieve all dependencies from the `package.json` and render HTML using handlebars.
+This will retrieve all dependencies from the `package.json` and render HTML using handlebars.
 
-#### Example Response - `/dependencies`
+##### Example Response - `/dependencies`
 
 ```html
 <!DOCTYPE html>
@@ -48,11 +48,11 @@ npm test
 </html>
 ```
 
-1. `GET - /api/minimum-secure`
+#### GET - `/api/minimum-secure`
 
-   This will return the minimum secure version for each release line as JSON. In other words, what is the highest version of each line that has `security: true`.
+This will return the minimum secure version for each release line as JSON. In other words, what is the highest version of each line that has `security: true`.
 
-#### Example Response `/api/minimum-secure`
+##### Example Response `/api/minimum-secure`
 
 ```json
 {
@@ -84,11 +84,11 @@ npm test
    }
 ```
 
-1. `GET - /api/latest-releases`
+#### GET - `/api/latest-releases`
 
-   This will return the latest release version in each release line as JSON.
+This will return the latest release version in each release line as JSON.
 
-#### Example Response `/api/latest-releases`
+##### Example Response `/api/latest-releases`
 
 ```json
 {
