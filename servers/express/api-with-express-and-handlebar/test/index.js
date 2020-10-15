@@ -26,10 +26,10 @@ tape('setup', async function (t) {
 
 tape('should get dependencies', async function (t) {
   const html = (await getBuffer(`${context.origin}/dependencies`)).toString()
-  t.equals(html.indexOf('bent') > -1, true, 'should contain bent')
-  t.equals(html.indexOf('express') > -1, true, 'should contain express')
-  t.equals(html.indexOf('hbs') > -1, true, 'should contain hbs')
-  t.equals(html.indexOf('semver') > -1, true, 'should contain semver')
+  t.equals(html.includes('bent'), true, 'should contain bent')
+  t.equals(html.includes('express'), true, 'should contain express')
+  t.equals(html.includes('hbs'), true, 'should contain hbs')
+  t.equals(html.includes('semver'), true, 'should contain semver')
 
   t.end()
 })
