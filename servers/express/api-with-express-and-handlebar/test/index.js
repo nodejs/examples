@@ -35,7 +35,7 @@ tape('should get dependencies', async function (t) {
 })
 
 tape('should get minimum secure versions', async function (t) {
-  const result = await getJSON(`${context.origin}/minimum-secure`)
+  const result = await getJSON(`${context.origin}/api/minimum-secure`)
   t.equals(result.v14.version, 'v14.4.0', 'version should match')
   t.equals(result.v13.version, 'v13.8.0', 'version should match')
   t.equals(result.v4.version, 'v4.9.0', 'version should match')
@@ -45,7 +45,7 @@ tape('should get minimum secure versions', async function (t) {
 })
 
 tape('should get latest-releases', async function (t) {
-  const result = await getJSON(`${context.origin}/latest-releases`)
+  const result = await getJSON(`${context.origin}/api/latest-releases`)
   t.equals(result.v14.version, 'v14.9.0', 'version should match')
   t.equals(result.v13.version, 'v13.14.0', 'version should match')
   t.equals(result.v4.version, 'v4.9.1', 'version should match')
