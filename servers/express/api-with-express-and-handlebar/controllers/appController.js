@@ -49,7 +49,7 @@ exports.minimumSecure = async (req, res) => {
     const minimumSecured = getLatestReleases(securedReleases)
     res.json(minimumSecured)
   } catch (error) {
-    res.send(`Unable to fetch data on ${req.route.path}, ${error}`)
+    res.json({ error, message: `Unable to fetch data on ${req.route.path}` })
   }
 }
 
@@ -59,7 +59,7 @@ exports.latestReleases = async (req, res) => {
     const releases = await getJSON(NODE_API_URL)
     res.json(getLatestReleases(releases))
   } catch (error) {
-    res.send(`Unable to fetch data on ${req.route.path}, ${error}`)
+    res.json({ error, message: `Unable to fetch data on ${req.route.path}` })
   }
 }
 
