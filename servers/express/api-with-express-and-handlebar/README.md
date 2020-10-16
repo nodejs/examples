@@ -136,14 +136,15 @@ Each of the above endpoints should have its own tests. Use the provided `test/in
   ok 1 should contain bent
   ok 2 should contain express
   ok 3 should contain hbs
+  ok 4 should contain semver
 
 # should get minimum secure versions
-  ok 4 v0 version should match
-  ok 5 v4 version should match
+  ok 5 v14 version should match
+  ok 6 v13 version should match
 
 # should get latest-releases
-  ok 6 v14 version should match
-  ok 7 v13 version should match
+  ok 7 v14 version should match
+  ok 8 v13 version should match
 ```
 
 ## Dependencies

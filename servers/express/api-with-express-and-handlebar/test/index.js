@@ -36,20 +36,16 @@ tape('should get dependencies', async function (t) {
 
 tape('should get minimum secure versions', async function (t) {
   const result = await getJSON(`${context.origin}/api/minimum-secure`)
-  t.equals(result.v14.version, 'v14.4.0', 'version should match')
-  t.equals(result.v13.version, 'v13.8.0', 'version should match')
-  t.equals(result.v4.version, 'v4.9.0', 'version should match')
-  t.equals(result.v0.version, 'v0.12.17', 'version should match')
+  t.equals(result.v14.version, 'v14.4.0', ' v14 version should match')
+  t.equals(result.v13.version, 'v13.8.0', 'v13 version should match')
 
   t.end()
 })
 
 tape('should get latest-releases', async function (t) {
   const result = await getJSON(`${context.origin}/api/latest-releases`)
-  t.equals(result.v14.version, 'v14.9.0', 'version should match')
-  t.equals(result.v13.version, 'v13.14.0', 'version should match')
-  t.equals(result.v4.version, 'v4.9.1', 'version should match')
-  t.equals(result.v0.version, 'v0.12.18', 'version should match')
+  t.equals(result.v14.version, 'v14.9.0', 'v14 version should match')
+  t.equals(result.v13.version, 'v13.14.0', 'v13 version should match')
 
   t.end()
 })
