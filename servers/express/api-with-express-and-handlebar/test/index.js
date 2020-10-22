@@ -55,3 +55,5 @@ tape('teardown', function (t) {
   context.server.close()
   t.end()
 })
+
+tape.onFinish(() => process.exit(0))
