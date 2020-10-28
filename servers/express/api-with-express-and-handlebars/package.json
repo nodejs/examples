@@ -1,0 +1,35 @@
+{
+  "name": "api-with-express-and-handlebars",
+  "version": "1.0.0",
+  "description": "Use Express.js to create routes that consume an API",
+  "main": "index.js",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "test": "node test/index",
+    "start": "node index"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/nodejs/examples.git"
+  },
+  "keywords": [],
+  "author": "Thiruppathi Muthukumar",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/nodejs/examples/issues"
+  },
+  "homepage": "https://github.com/nodejs/examples#readme",
+  "dependencies": {
+    "bent": "^7.3.10",
+    "express": "^4.17.1",
+    "hbs": "^4.1.1",
+    "semver": "^7.3.2"
+  },
+  "devDependencies": {
+    "get-port": "^5.1.1",
+    "nock": "^13.0.4",
+    "tape": "^5.0.1"
+  }
+}
