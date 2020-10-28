@@ -1,5 +1,5 @@
 {
-  "name": "api-with-express-and-handlebar",
+  "name": "api-with-express-and-handlebars",
   "version": "1.0.0",
   "description": "Use Express.js to create routes that consume an API",
   "main": "index.js",
