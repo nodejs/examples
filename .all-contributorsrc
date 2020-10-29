@@ -31,6 +31,16 @@
         "infra",
         "ideas"
       ]
+    },
+    {
+      "login": "Thiruppathi",
+      "name": "Thiru",
+      "avatar_url": "https://avatars1.githubusercontent.com/u/7230720?v=4",
+      "profile": "https://thiru.xyz/",
+      "contributions": [
+        "example",
+        "maintenance"
+      ]
     }
   ],
   "contributorsPerLine": 7
