@@ -1,0 +1,15 @@
+{
+  "name": "hello-world",
+  "version": "1.0.0",
+  "description": "All the code examples are compliant with the [standard](https://standardjs.com/index.html) linting style. This hello world example goes into more detail than subsequent examples as it is intended for possible newbies.",
+  "main": "hello-world.js",
+  "scripts": {
+    "start": "node hello-world.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "fastify": "^3.2.1"
+  }
+}
