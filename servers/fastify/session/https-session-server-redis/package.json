@@ -1,0 +1,20 @@
+{
+  "name": "https-session-server-redis",
+  "version": "1.0.0",
+  "description": "",
+  "main": "https-session-server-redis.js",
+  "scripts": {
+    "start": "node https-session-server-redis.js"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "MIT",
+  "dependencies": {
+    "connect-redis": "^5.0.0",
+    "fastify": "^3.2.0",
+    "fastify-cookie": "^4.0.2",
+    "fastify-redis": "^4.0.3",
+    "fastify-session": "^5.0.0",
+    "is-docker": "^2.1.1"
+  }
+}
