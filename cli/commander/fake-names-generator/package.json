@@ -1,0 +1,38 @@
+{
+  "name": "fake-names-generator",
+  "version": "1.0.0",
+  "description": "CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [faker](https://www.npmjs.com/package/faker)",
+  "main": "index.js",
+  "bin": {
+    "fake-names-generator": "./bin/cli.js"
+  },
+  "scripts": {
+    "test:unit": "jest --coverage",
+    "test:onlychanged": "jest --onlyChanged --coverage",
+    "lint": "standard",
+    "test": "npm run lint && npm run test:unit"
+  },
+  "keywords": [
+    "commander",
+    "faker",
+    "cli"
+  ],
+  "author": "Thiruppathi Muthukumar",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^6.2.0",
+    "faker": "^5.1.0"
+  },
+  "devDependencies": {
+    "jest": "^25.2.6",
+    "standard": "^14.3.3"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "test",
+      "expect",
+      "jest"
+    ]
+  }
+}
