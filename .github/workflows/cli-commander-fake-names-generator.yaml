@@ -3,10 +3,10 @@ name: cli-commander-fake-names-generator
 on:
   push:
     paths:
-      - 'cli/commander/fake-names-generators/**'
+      - 'cli/commander/fake-names-generator/**'
   pull_request:
     paths:
-      - 'cli/commander/fake-names-generators/**'
+      - 'cli/commander/fake-names-generator/**'
   schedule:
     # Every day at 1am
     - cron:  '0 1 * * *'
@@ -28,7 +28,7 @@ jobs:
         node-version: ${{ matrix.node-version }}
     - name: npm install
       run: npm install
-      working-directory: './cli/commander/fake-names-generators'
+      working-directory: './cli/commander/fake-names-generator'
     - name: npm run test
       run: npm run test
-      working-directory: './cli/commander/fake-names-generators'
+      working-directory: './cli/commander/fake-names-generator'
