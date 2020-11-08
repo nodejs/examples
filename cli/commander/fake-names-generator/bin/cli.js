@@ -17,8 +17,15 @@ program
 
 // custom help must be defined before .parse()
 program.on('--help', () => {
-  const examples = ['-g female', '-g male', '-n firstName', '-n lastName']
-  console.log('Example usages:')
+  const examples = [
+    '-g female \t# generates a female full name',
+    '-g male \t\t# generates a male full name',
+    '-n firstName \t# generates a first name with random gender',
+    '-n lastName \t# generates a last name with random gender',
+    '-t 5 \t\t# generates 5 full names with random gender',
+    '-s \t\t# generates a full name also saves the result as json file',
+    '-i \t\t# gives extra log info during name generation']
+  console.log('\nExample usages:\n')
   examples.forEach(example => console.log(`\t$ fake-names-generator ${example}`))
 })
 
