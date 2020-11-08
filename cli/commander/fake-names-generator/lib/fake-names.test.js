@@ -91,6 +91,11 @@ describe('fake names tests', () => {
     expect(fakeNames.generateNames).toHaveBeenCalled()
     expect(fs.writeFileSync).toHaveBeenCalled()
     expect(utils.log.success).toHaveBeenCalled()
+
+    // Cleanup by Deleting the generated file
+    fs.readdirSync('./')
+      .filter(f => f.startsWith('fake-names-') && f.endsWith('.json'))
+      .map(f => fs.unlinkSync(f))
   })
 
   test('should generate a random gender', () => {
