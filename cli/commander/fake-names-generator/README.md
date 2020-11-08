@@ -72,3 +72,9 @@ fake-names-generator # run the CLI
 ```bash
 npx fake-names-generator # this would temporarily download the module, run the first entry in `bin` of package.json and pass along any additional arguments like `--gender`
 ```
+
+## Tests
+
+```bash
+npm test
+```
