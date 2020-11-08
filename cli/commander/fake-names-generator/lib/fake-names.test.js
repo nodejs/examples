@@ -69,6 +69,16 @@ describe('fake names tests', () => {
     expect(names).toHaveLength(5)
   })
 
+  test('should log names', () => {
+    jest.spyOn(fakeNames, 'logNames')
+    jest.spyOn(fakeNames, 'generateNames')
+    jest.spyOn(console, 'log')
+    fakeNames.logNames()
+    expect(fakeNames.logNames).toHaveBeenCalled()
+    expect(fakeNames.generateNames).toHaveBeenCalled()
+    expect(console.log).toHaveBeenCalled()
+  })
+
   test('should save names in a file', () => {
     jest.spyOn(fakeNames, 'saveNames')
     jest.spyOn(fakeNames, 'generateNames')
