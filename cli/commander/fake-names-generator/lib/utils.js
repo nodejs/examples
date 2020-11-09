@@ -1,5 +1,5 @@
 const chalk = require('chalk')
-const currentTime = new Date().toLocaleTimeString([], { hour12: false })
+const currentTime = (new Date().toLocaleTimeString([], { hour12: false })).split(':').join('-')
 
 // Pretty print console logs with Chalk
 exports.log = {

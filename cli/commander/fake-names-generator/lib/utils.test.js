@@ -10,7 +10,7 @@ describe('utils tests', () => {
 
   test('should return a name with current timestamp', () => {
     jest.spyOn(utils, 'getFileName')
-    const currentTime = new Date().toLocaleTimeString([], { hour12: false })
+    const currentTime = new Date().toLocaleTimeString([], { hour12: false }).split(':').join('-')
     utils.getFileName()
     expect(utils.getFileName).toHaveBeenCalled()
     expect(utils.getFileName()).toBe(`fake-names-${currentTime}.json`)
