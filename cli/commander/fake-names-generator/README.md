@@ -48,7 +48,7 @@ npm i -g # this will install the current working directory as a global module.
 fake-names-generator # run the CLI
 ```
 
-You may want to run `npm uninstall -g` # to uninstall it.
+You may want to run `npm uninstall -g` to uninstall it.
 
 **Via symlink:**
 
