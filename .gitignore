@@ -107,9 +107,6 @@ dist
 # Stores VSCode versions used for testing VSCode extensions
 .vscode-test
 
-# VSCode workspaces
-*.code-workspace
-
 # yarn v2
 
 .yarn/cache
@@ -120,3 +117,6 @@ dist
 # ignore lockfiles
 package-lock.json
 yarn.lock
+
+# VSCode workspaces
+*.code-workspace
