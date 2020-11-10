@@ -28,7 +28,6 @@ Example usages:
         $ fake-names-generator -t 5             # generates 5 full names with random gender
         $ fake-names-generator -s               # generates a full name also saves the result as json file
         $ fake-names-generator -i               # gives extra log info during name generation
-
 ```
 
 ### As a Local Project
