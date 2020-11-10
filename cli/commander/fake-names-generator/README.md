@@ -25,7 +25,6 @@ Example usages:
         $ fake-names-generator -t 5             # generates 5 full names
         $ fake-names-generator -s               # generates a full name also saves the result as json file
         $ fake-names-generator -i               # gives extra log info during name generation
-
 ```
 
 ### As a Local Project
@@ -45,7 +44,7 @@ npm i -g # this will install the current working directory as a global module.
 fake-names-generator # run the CLI
 ```
 
-You may want to run `npm uninstall -g` to uninstall it.
+You may want to run `npm uninstall -g` from the project directory to uninstall it.
 
 **Via symlink:**
 
