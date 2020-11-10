@@ -3,8 +3,6 @@ const utils = require('../lib/utils')
 const fs = require('fs')
 
 describe('fake names tests', () => {
-  const genderSpy = jest.spyOn(fakeNames, 'randomGender').mockImplementation(() => 'female')
-
   test('should generate a first name', () => {
     const spy = jest.spyOn(fakeNames, 'firstName').mockImplementation(() => 'Jane')
     fakeNames.firstName()
@@ -12,27 +10,10 @@ describe('fake names tests', () => {
     expect(spy()).toBe('Jane')
   })
 
-  test('should generate a male first name', () => {
-    const spy = jest.spyOn(fakeNames, 'firstName').mockImplementation(() => 'John')
-
-    fakeNames.firstName('male')
-    expect(spy).toHaveBeenCalledWith('male')
-    expect(spy()).toBe('John')
-  })
-
   test('should generate a last name', () => {
     const spy = jest.spyOn(fakeNames, 'lastName').mockImplementation(() => 'Doe')
     fakeNames.lastName()
-    genderSpy()
     expect(spy).toHaveBeenCalled()
-    expect(spy()).toBe('Doe')
-  })
-
-  test('should generate a male last name', () => {
-    const spy = jest.spyOn(fakeNames, 'lastName').mockImplementation(() => 'Doe')
-
-    fakeNames.lastName('male')
-    expect(spy).toHaveBeenCalledWith('male')
     expect(spy()).toBe('Doe')
   })
 
@@ -81,11 +62,5 @@ describe('fake names tests', () => {
     fs.readdirSync('./')
       .filter(f => f.startsWith('fake-names-') && f.endsWith('.json'))
       .map(f => fs.unlinkSync(f))
-  })
-
-  test('should generate a random gender', () => {
-    fakeNames.randomGender()
-    expect(genderSpy).toHaveBeenCalled()
-    expect(genderSpy()).toBe('female')
   })
 })

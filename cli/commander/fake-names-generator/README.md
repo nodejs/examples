@@ -13,7 +13,6 @@ CLI built with [commander](https://www.npmjs.com/package/commander) to generate 
 
 Options:
   -V, --version            output the version number
-  -g, --gender <option>    Specify gender (default: "female")
   -n, --nameType <option>  name (default: "fullName")
   -t, --times <option>     number of times (default: 1)
   -i --info                info (default: false)
@@ -21,11 +20,9 @@ Options:
   -h, --help               display help for command
 
 Example usages:
-        $ fake-names-generator -g female        # generates a female full name
-        $ fake-names-generator -g male          # generates a male full name
-        $ fake-names-generator -n firstName     # generates a first name with random gender
-        $ fake-names-generator -n lastName      # generates a last name with random gender
-        $ fake-names-generator -t 5             # generates 5 full names with random gender
+        $ fake-names-generator -n firstName     # generates a first name
+        $ fake-names-generator -n lastName      # generates a last name
+        $ fake-names-generator -t 5             # generates 5 full names
         $ fake-names-generator -s               # generates a full name also saves the result as json file
         $ fake-names-generator -i               # gives extra log info during name generation
 
@@ -70,7 +67,7 @@ fake-names-generator # run the CLI
 ```
 
 ```bash
-npx fake-names-generator # this would temporarily download the module, run the first entry in `bin` of package.json and pass along any additional arguments like `--gender`
+npx fake-names-generator # this would temporarily download the module, run the first entry in `bin` of package.json and pass along any additional arguments like `--save`
 ```
 
 ## Tests
