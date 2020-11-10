@@ -1,61 +1,46 @@
 const fakeNames = require('./fake-names')
-const faker = require('faker')
-const fs = require('fs')
 const utils = require('../lib/utils')
+const fs = require('fs')
 
 describe('fake names tests', () => {
-  const fakerFirstNameSpy = jest.spyOn(faker.name, 'firstName').mockImplementation(() => 'Jane')
-  const fakerLastNameSpy = jest.spyOn(faker.name, 'lastName').mockImplementation(() => 'Doe')
   const genderSpy = jest.spyOn(fakeNames, 'randomGender').mockImplementation(() => 'female')
 
   test('should generate a first name', () => {
-    const spy = jest.spyOn(fakeNames, 'firstName')
+    const spy = jest.spyOn(fakeNames, 'firstName').mockImplementation(() => 'Jane')
     fakeNames.firstName()
-
-    expect(genderSpy).toHaveBeenCalled()
     expect(spy).toHaveBeenCalled()
-    expect(fakerFirstNameSpy).toHaveBeenCalled()
     expect(spy()).toBe('Jane')
   })
 
   test('should generate a male first name', () => {
-    const spy = jest.spyOn(fakeNames, 'firstName')
+    const spy = jest.spyOn(fakeNames, 'firstName').mockImplementation(() => 'John')
 
     fakeNames.firstName('male')
     expect(spy).toHaveBeenCalledWith('male')
-    expect(fakerFirstNameSpy).toHaveBeenCalledWith('male')
-    expect(spy()).toBe('Jane')
+    expect(spy()).toBe('John')
   })
 
   test('should generate a last name', () => {
-    const spy = jest.spyOn(fakeNames, 'lastName')
+    const spy = jest.spyOn(fakeNames, 'lastName').mockImplementation(() => 'Doe')
     fakeNames.lastName()
-
+    genderSpy()
     expect(spy).toHaveBeenCalled()
-    expect(fakerLastNameSpy).toHaveBeenCalled()
     expect(spy()).toBe('Doe')
   })
 
   test('should generate a male last name', () => {
-    const spy = jest.spyOn(fakeNames, 'lastName')
+    const spy = jest.spyOn(fakeNames, 'lastName').mockImplementation(() => 'Doe')
 
     fakeNames.lastName('male')
     expect(spy).toHaveBeenCalledWith('male')
-    expect(fakerLastNameSpy).toHaveBeenCalledWith('male')
     expect(spy()).toBe('Doe')
   })
 
   test('should generate a full name', () => {
-    const firstNameSpy = jest.spyOn(fakeNames, 'firstName')
-    const lastNameSpy = jest.spyOn(fakeNames, 'lastName')
-    const spy = jest.spyOn(fakeNames, 'fullName')
+    const spy = jest.spyOn(fakeNames, 'fullName').mockImplementation(() => 'Jane Doe')
 
     fakeNames.fullName()
     expect(spy).toHaveBeenCalled()
-    expect(firstNameSpy).toHaveBeenCalled()
-    expect(lastNameSpy).toHaveBeenCalled()
-    expect(fakerFirstNameSpy).toHaveBeenCalled()
-    expect(fakerLastNameSpy).toHaveBeenCalled()
     expect(spy()).toBe('Jane Doe')
   })
 

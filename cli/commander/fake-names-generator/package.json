@@ -1,7 +1,7 @@
 {
   "name": "fake-names-generator",
   "version": "1.0.0",
-  "description": "CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [faker](https://www.npmjs.com/package/faker)",
+  "description": "CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [ChanceJS](https://www.npmjs.com/package/chance)",
   "main": "index.js",
   "bin": {
     "fake-names-generator": "./bin/cli.js"
@@ -14,14 +14,14 @@
   },
   "keywords": [
     "commander",
-    "faker",
+    "chance",
     "cli"
   ],
   "author": "Thiruppathi Muthukumar",
   "license": "MIT",
   "dependencies": {
     "commander": "^6.2.0",
-    "faker": "^5.1.0"
+    "chance": "^1.1.7"
   },
   "devDependencies": {
     "jest": "^25.2.6",

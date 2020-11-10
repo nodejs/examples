@@ -1,4 +1,5 @@
-const faker = require('faker')
+const Chance = require('chance') // Load Chance
+const chance = new Chance() // Instantiate Chance so it can be used
 const fs = require('fs')
 const { log, getFileName } = require('../lib/utils')
 
@@ -8,13 +9,13 @@ const genders = ['female', 'male']
 exports.randomGender = () => genders[Math.floor(Math.random() * genders.length)]
 
 // Get First name of a given gender. If gender is not given, random gender is picked
-exports.firstName = (gender = this.randomGender()) => faker.name.firstName(gender)
+exports.firstName = (gender = this.randomGender()) => chance.first({ gender })
 
 // Get Last name of a given gender. If gender is not given, random gender is picked
-exports.lastName = (gender = this.randomGender()) => faker.name.lastName(gender)
+exports.lastName = (gender = this.randomGender()) => chance.last({ gender })
 
 // Get Full name of a given gender. If gender is not given, random gender is picked
-exports.fullName = (gender = this.randomGender()) => `${this.firstName(gender)} ${this.lastName(gender)}`
+exports.fullName = (gender = this.randomGender()) => chance.name({ gender })
 
 // Generates names based on cli inputs
 exports.generateNames = (times = 1, nameType = 'fullName', gender = this.randomGender()) => {

@@ -1,6 +1,6 @@
 # fake-names-generator
 
-CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [faker](https://www.npmjs.com/package/faker)
+CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [ChanceJS](https://www.npmjs.com/package/chance)
 
 ## Usage
 
@@ -9,7 +9,7 @@ Here is the output of running `node bin/cli.js -h` from the `fake-names-generato
 ```bash
 Usage: fake-names-generator <option>
 
-CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [faker](https://www.npmjs.com/package/faker)
+CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [ChanceJS](https://www.npmjs.com/package/chance)
 
 Options:
   -V, --version            output the version number
