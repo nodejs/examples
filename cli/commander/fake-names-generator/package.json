@@ -1,7 +1,7 @@
 {
   "name": "fake-names-generator",
   "version": "1.0.0",
-  "description": "CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [ChanceJS](https://www.npmjs.com/package/chance)",
+CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [Chance](https://www.npmjs.com/package/chance)
   "main": "index.js",
   "bin": {
     "fake-names-generator": "./bin/cli.js"
