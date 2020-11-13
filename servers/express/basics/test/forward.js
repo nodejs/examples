@@ -6,7 +6,7 @@ const tap = require('tap')
 server.start()
 
 // test the /redirect route
-const url = 'http://localhost:12000/a'
+const url = 'http://localhost:12000/redirect'
 request(url, (err, res, body) => {
   if(err)
     tap.fail(err)
