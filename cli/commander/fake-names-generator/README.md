@@ -1,6 +1,6 @@
 # fake-names-generator
 
-CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [ChanceJS](https://www.npmjs.com/package/chance)
+CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [Chance](https://www.npmjs.com/package/chance)
 
 ## Usage
 
