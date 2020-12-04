@@ -29,6 +29,9 @@ jobs:
     - name: npm install
       run: npm install
       working-directory: './servers/express/basics'
+    - name: npm install tap
+      run: npm install --save-dev tap
+      working-directory: './servers/express/basics'
     - name: npm run test
       run: npm run test
       working-directory: './servers/express/basics'
