@@ -1,0 +1,34 @@
+name: cli-commander-fake-names-generator
+
+on:
+  push:
+    paths:
+      - 'cli/commander/fake-names-generator/**'
+  pull_request:
+    paths:
+      - 'cli/commander/fake-names-generator/**'
+  schedule:
+    # Every day at 1am
+    - cron:  '0 1 * * *'
+
+jobs:
+  build:
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest, macOS-latest]
+        node-version: [10.x, 12.x]
+    env:
+      CI: true
+    steps:
+    - uses: actions/checkout@v2
+    - name: Use Node.js ${{ matrix.node-version }} on ${{ matrix.os }}
+      uses: actions/setup-node@v1
+      with:
+        node-version: ${{ matrix.node-version }}
+    - name: npm install
+      run: npm install
+      working-directory: './cli/commander/fake-names-generator'
+    - name: npm run test
+      run: npm run test
+      working-directory: './cli/commander/fake-names-generator'

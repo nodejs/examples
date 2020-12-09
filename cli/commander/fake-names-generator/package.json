@@ -1,0 +1,38 @@
+{
+  "name": "fake-names-generator",
+  "version": "1.0.0",
+  "description": "CLI built with [commander](https://www.npmjs.com/package/commander) to generate fake names using [Chance](https://www.npmjs.com/package/chance)",
+  "main": "index.js",
+  "bin": {
+    "fake-names-generator": "./bin/cli.js"
+  },
+  "scripts": {
+    "test:unit": "jest --coverage",
+    "test:onlychanged": "jest --onlyChanged --coverage",
+    "lint": "standard",
+    "test": "npm run lint && npm run test:unit"
+  },
+  "keywords": [
+    "commander",
+    "chance",
+    "cli"
+  ],
+  "author": "Thiruppathi Muthukumar",
+  "license": "MIT",
+  "dependencies": {
+    "commander": "^6.2.0",
+    "chance": "^1.1.7"
+  },
+  "devDependencies": {
+    "jest": "^25.2.6",
+    "standard": "^14.3.3"
+  },
+  "standard": {
+    "globals": [
+      "describe",
+      "test",
+      "expect",
+      "jest"
+    ]
+  }
+}
