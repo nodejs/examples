@@ -117,3 +117,6 @@ dist
 # ignore lockfiles
 package-lock.json
 yarn.lock
+
+# ignore VS Code workspace
+*.code-workspace
