@@ -32,10 +32,10 @@ if (program.info) {
   log.dim(`\nGenerating ${program.times} names \n`)
 }
 
-// always logs the generated names
-logNames(program.times, program.nameType)
-
 // Saves the generated names as JSON file.
 if (program.save) {
   saveNames(program.times, program.nameType)
+} else {
+  // always logs the generated names
+  logNames(program.times, program.nameType)
 }

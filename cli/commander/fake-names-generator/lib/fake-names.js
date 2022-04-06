@@ -29,6 +29,7 @@ exports.logNames = (times, nameType) => {
 // Saves the generated names in a JSON File
 exports.saveNames = (times, nameType) => {
   const names = this.generateNames(times, nameType)
+  names.forEach(name => console.log(name))
   const data = JSON.stringify({ names })
   fs.writeFileSync(getFileName(), data)
   log.success(`\n✅ Saved ${times} names to ${getFileName()}\n`)
