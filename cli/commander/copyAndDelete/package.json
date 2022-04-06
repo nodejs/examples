@@ -1,0 +1,21 @@
+{
+  "name": "copy-and-delete",
+  "version": "1.0.0",
+  "description": "You can copy files to a specific directory path or delete specific files and directory.",
+  "main": "index.js",
+  "scripts": {
+    "lint": "standard",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "commander": "^6.1.0"
+  },
+  "bin": {
+    "copyAndDelete": "./bin/cli.js"
+  },
+  "devDependencies": {
+    "standard": "^14.3.4"
+  }
+}
