@@ -1,0 +1,9 @@
+{
+    "name": "namegen",
+    "version": "1.0.0",
+    "description": "Serverless fantasy name generator",
+    "main": "namegen.js",
+    "dependencies": {
+      "fantasy-name-generator": "^2.0.0"
+    }
+  }
