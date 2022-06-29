@@ -74,3 +74,4 @@ npx fake-names-generator # this would temporarily download the module, run the f
 ```bash
 npm test
 ```
+## Tests Complete
