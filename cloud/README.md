@@ -10,7 +10,7 @@ Anything that is related to deployment of Node.js applications to the cloud. For
 - Serverless (Serverless Framework, OpenFaaS, AWS Lambda, Google Cloud Functions, Google Cloud Run, Azure Functions)
 - Orchestration (Kubernetes, Terraform, OpenShift)
 - Cloud-specific (AWS, GCP, Azure, IBM Cloud, DigitalOcean, Alibaba Cloud, Oracle Cloud)
-- Tiny Clouds (Netlify, Now, Glitch, CloudFlare Workers, Heroku, Surge, Begin)
+- Tiny Clouds (Netlify, Vercel, Glitch, CloudFlare Workers, Heroku, Surge, Begin)
 
 ## Contributing to Examples
 
