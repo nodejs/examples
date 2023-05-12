@@ -1,0 +1,20 @@
+{
+  "name": "google-cloud-run",
+  "version": "1.0.0",
+  "description": "",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "keywords": [],
+  "author": "Patrick Heneise <patrick@zentered.co> (https://zentered.co)",
+  "dependencies": {
+    "fastify": "^4.17.0",
+    "mercurius": "^13.0.0"
+  },
+  "devDependencies": {
+    "pino-pretty": "^10.0.0"
+  }
+}
