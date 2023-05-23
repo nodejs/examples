@@ -9,5 +9,8 @@
   "scripts": {
     "start": "node index.js",
     "test": "node --test"
+  },
+  "engines": {
+    "node": "20"
   }
 }
