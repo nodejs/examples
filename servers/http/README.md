@@ -24,7 +24,10 @@ npm start
 
 ## Test
 
-`http.test.js` shows how to test the server using the native `node:test` module.
+`http.test.js` shows how to test the server using the native
+[node:test](https://nodejs.org/dist/latest-v20.x/docs/api/test.html#test-runner)
+module and the
+[fetch](https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API) API.
 
 ```bash
 npm test

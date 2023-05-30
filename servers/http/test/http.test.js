@@ -5,6 +5,7 @@ import server from '../index.js'
 test('http', async (t) => {
   await t.test('/', async () => {
     try {
+      // https://developer.mozilla.org/en-US/docs/Web/API/Fetch_API
       const request = await fetch('http://localhost:3000')
       const actual = await request.json()
       const expected = { data: 'Hello World!' }
