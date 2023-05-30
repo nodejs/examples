@@ -1,0 +1,16 @@
+{
+  "name": "node-example-http",
+  "version": "1.0.0",
+  "description": "A simple http server with Node.js",
+  "keywords": [],
+  "author": "Patrick Heneise <patrick@zentered.co>",
+  "type": "module",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "node --test"
+  },
+  "engines": {
+    "node": "20"
+  }
+}
