@@ -1,3 +1,13 @@
+⚠️⚠️⚠️
+
+The contents of this repository are not up to date.
+The opinions and information expressed here do not necessarily reflect the up-to-date opinions of the Node.js project.
+It is kept here as a public archive.
+
+⚠️⚠️⚠️
+
+-----
+
 # Node.js Examples
 
 This repository is a collective of opinionated and real-world examples of how you can use Node.js to build things.
